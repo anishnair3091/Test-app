@@ -6,7 +6,7 @@ import pickle
 
 # User Authentication
 
-user_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/user_data.csv")
+user_data= pd.read_csv(r"https://github.com/anishnair3091/My-datas/raw/refs/heads/main/user_data.csv")
 
 
 def user_type():
@@ -31,7 +31,7 @@ usertype= usertypes
 
 # Load passwords
 
-file_path = Path("/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/secrets/hashed_pw.pkl")
+file_path = Path("https://github.com/anishnair3091/My-datas/raw/refs/heads/main/hashed_pw.pkl")
 with file_path.open('rb') as file:
     hashed_passwords= pickle.load(file)
 
@@ -56,12 +56,12 @@ if authentication_status == False:
 if authentication_status == True:
     st.sidebar.write(f'Welcome **{name}**')
     if user_type() == 'customer':
-        st.switch_page("pages/Home-page.py")
+        st.switch_page("https://github.com/anishnair3091/Test-app/raw/refs/heads/pages/Home-page.py")
     elif user_type() == 'supplier':
-        st.switch_page("pages/Supplier-Home-page.py")
+        st.switch_page("https://github.com/anishnair3091/Test-app/raw/refs/heads/pages/Supplier-Home-page.py")
     
     elif user_type() == 'Admin':
-        st.switch_page("pages/admin_page.py")
+        st.switch_page("https://github.com/anishnair3091/Test-app/raw/refs/heads/pages/admin_page.py")
     else:
         st.error("Invalid username/password")
         
@@ -70,4 +70,4 @@ if authentication_status == True:
 
 
 if st.sidebar.button('Main'):
-    st.switch_page('BMTS_app-option2.py')
+    st.switch_page('Main_page-copy.py')
