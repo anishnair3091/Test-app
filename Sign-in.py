@@ -6,7 +6,7 @@ import pickle
 
 # User Authentication
 
-user_data= pd.read_csv(r"https://github.com/anishnair3091/My-datas/raw/refs/heads/main/user_data.csv")
+user_data= pd.read_csv("user_data.csv")
 
 
 def user_type():
@@ -31,7 +31,7 @@ usertype= usertypes
 
 # Load passwords
 
-file_path = Path("https://github.com/anishnair3091/My-datas/raw/refs/heads/main/hashed_pw.pkl")
+file_path = Path("hashed_pw.pkl")
 with file_path.open('rb') as file:
     hashed_passwords= pickle.load(file)
 
