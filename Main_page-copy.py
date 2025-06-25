@@ -42,7 +42,6 @@ st.markdown("<h1 style='text-align: center; color : #625656; font-size : 40px '>
 st.markdown("<h1 style='text-align: center; color : #625656; font-size: 15px; '> Please choose any of the below options!</h1>", unsafe_allow_html= True)
 
 
-st.markdown('<style>' + open('/Users/anishmnair/Desktop/Streamlit/My_new_app/BMTS-APP/html/styles/styles.css').read() + '</style>', unsafe_allow_html=True)
 
 row1= st.columns(1)
 
