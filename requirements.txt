@@ -1,0 +1,7 @@
+extra_streamlit_components==0.1.80
+pandas==2.2.2
+image==1.5.33
+selenium==4.31.0
+rembg==2.0.65
+
+
