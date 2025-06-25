@@ -4,3 +4,4 @@ image
 selenium
 rembg
 onnxruntime
+llvmlite==0.43.0
