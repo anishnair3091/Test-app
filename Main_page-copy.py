@@ -35,7 +35,7 @@ with col8:
 		
 with col9:
 	if st.button("SIGN-IN", icon= ':material/login:', use_container_width=True, type='tertiary'):
-		st.switch_page('pages\Sign-in.py')
+		st.switch_page('pages/Sign-in.py')
 
 
 
@@ -56,13 +56,13 @@ col11, col12, col13, col14, col15= st.columns(5, gap= 'large', border=False)
 with col12:
 	
 	if st.button("**CUSTOMER PORTAL**", icon= '👨🏻‍💻', use_container_width=True, type='tertiary'):
-		st.switch_page("pages\Sign-in.py")
+		st.switch_page("pages/Sign-in.py")
 	
 
 
 with col14:
 	if st.button("**SUPPLIER PORTAL**", icon= '🚛', use_container_width=True, type= 'tertiary'):
-		st.switch_page("pages\Sign-in.py")
+		st.switch_page("pages/Sign-in.py")
 
 
 
