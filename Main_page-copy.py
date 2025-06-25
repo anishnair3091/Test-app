@@ -34,7 +34,7 @@ with col8:
 	st.page_link('https://www.bmts.ae', label= 'WEBSITE', icon= "🌍")
 		
 with col9:
-	st.page_link('https://github.com/anishnair3091/Test-app/raw/refs/heads/pages/Sign-in.py', label= 'SIGN-IN', icon=":material/login:")
+	st.page_link('Sign-in.py', label= 'SIGN-IN', icon=":material/login:")
 
 
 
@@ -55,13 +55,13 @@ col11, col12, col13, col14, col15= st.columns(5, gap= 'large', border=False)
 with col12:
 	
 	if st.button("**CUSTOMER PORTAL**", icon= '👨🏻‍💻', use_container_width=True, type='tertiary'):
-		st.switch_page("pages/Sign-in.py")
+		st.switch_page("Sign-in.py")
 	
 
 
 with col14:
 	if st.button("**SUPPLIER PORTAL**", icon= '🚛', use_container_width=True, type= 'tertiary'):
-		st.switch_page("pages/Sign-in.py")
+		st.switch_page("Sign-in.py")
 
 
 
