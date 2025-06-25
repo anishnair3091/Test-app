@@ -35,7 +35,7 @@ with col8:
 		
 with col9:
 	if st.button("SIGN-IN", icon= ':material/login:', use_container_width=True, type='tertiary'):
-		st.switch_page('Sign-in.py')
+		st.switch_page('pages/Sign-in.py')
 
 
 
