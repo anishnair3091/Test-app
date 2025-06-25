@@ -5,3 +5,4 @@ selenium
 rembg
 onnxruntime
 llvmlite
+streamlit_extras
