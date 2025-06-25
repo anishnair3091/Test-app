@@ -5,3 +5,6 @@ selenium
 rembg
 onnxruntime
 llvmlite
+streamlit_authenticator
+pathlib
+pickle
