@@ -33,7 +33,8 @@ col1, col2, col3, col4, col5, col6, col7, col8, col9, col10= st.columns(10)
 with col8:
 	st.page_link('https://www.bmts.ae', label= 'WEBSITE', icon= "🌍")
 		
-
+with col9:
+	st.page_link('pages/Sign-in.py', label= 'SIGN-IN', icon=":material/login:")
 
 
 
@@ -54,13 +55,13 @@ col11, col12, col13, col14, col15= st.columns(5, gap= 'large', border=False)
 with col12:
 	
 	if st.button("**CUSTOMER PORTAL**", icon= '👨🏻‍💻', use_container_width=True, type='tertiary'):
-		st.write("pages/Sign-in.py")
+		st.switch_page("pages/Sign-in.py")
 	
 
 
 with col14:
 	if st.button("**SUPPLIER PORTAL**", icon= '🚛', use_container_width=True, type= 'tertiary'):
-		st.write("pages/Sign-in.py")
+		st.switch_page("pages/Sign-in.py")
 
 
 
