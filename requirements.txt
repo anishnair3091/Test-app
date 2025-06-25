@@ -3,3 +3,4 @@ pandas
 image
 selenium
 rembg
+onnxruntime
