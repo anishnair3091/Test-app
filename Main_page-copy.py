@@ -26,7 +26,7 @@ page_bg_img= f"""
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-main_page= st.Page("Main_page.py", title= 'Main page', icon= '🏢', )
+main_page= st.Page("Main_page-copy.py", title= 'Main page', icon= '🏢', )
 
 col1, col2, col3, col4, col5, col6, col7, col8, col9, col10= st.columns(10)
 
