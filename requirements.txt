@@ -1,4 +1,3 @@
-python==3.8.20
 extra_streamlit_components
 pandas
 image
@@ -7,7 +6,7 @@ rembg
 onnxruntime
 llvmlite
 streamlit_extras
-streamlit-authenticator==0.3.3
+streamlit_authenticator
 pathlib
 time
-streamlit-folium==0.25.0
+streamlit-folium
