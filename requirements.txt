@@ -8,5 +8,5 @@ llvmlite
 streamlit_extras
 streamlit_authenticator
 pathlib
-pickle
+pickleshare
 time
