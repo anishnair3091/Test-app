@@ -1,5 +1,6 @@
 extra_streamlit_components
 pandas
+numpy
 image
 selenium
 rembg
@@ -9,4 +10,3 @@ streamlit-extras==0.7.1
 streamlit-authenticator==0.3.3
 time
 streamlit-folium
-numpy
