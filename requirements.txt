@@ -17,3 +17,4 @@ streamlit_authenticator==0.3.3
 streamlit_extras==0.7.1
 streamlit_folium==0.25.0
 streamlit_on_Hover_tabs==1.0.1
+email-validator
