@@ -5,8 +5,7 @@ selenium
 rembg
 onnxruntime
 llvmlite
-streamlit_extras
-streamlit_authenticator
-pathlib
+streamlit-extras==0.7.1
+streamlit-authenticator==0.3.3
 time
 streamlit-folium
