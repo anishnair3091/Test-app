@@ -6,7 +6,7 @@ rembg
 onnxruntime
 llvmlite
 streamlit_extras
-streamlit_authenticator
+streamlit-authenticator==0.3.3
 pathlib
-pickleshare
 time
+streamlit-folium==0.25.0
