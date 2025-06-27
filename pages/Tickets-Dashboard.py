@@ -29,7 +29,6 @@ Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
 if st.sidebar.button('Home', icon= '🏡'):
 	st.switch_page(Home)
 
-st.markdown(page_bg_img, unsafe_allow_html=True)
 
 page_bg_head= f"""
 <p>P2S</p>
