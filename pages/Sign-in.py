@@ -11,7 +11,7 @@ st.set_page_config(page_title= 'Sign-in', layout='centered', initial_sidebar_sta
 
 # User Authentication
 
-user_data= pd.read_csv("user_data.csv")
+user_data= pd.read_csv("DATA/user_data.csv")
 
 
 def user_type():
