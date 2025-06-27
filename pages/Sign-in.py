@@ -68,6 +68,7 @@ if authentication_status == True:
     
 
 
-
+if st.sidebar.button('Logout'):
+    st.logout()
 if st.sidebar.button('Main'):
     st.switch_page('Main_page-copy.py')
