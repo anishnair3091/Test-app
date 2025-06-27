@@ -65,6 +65,17 @@ def usertype():
 		user_type= user 
 	return user_type
 
+
+page_bg_head= f"""
+<p>P2S</p>
+<style>
+.st-emotion-cache-gkoddq{{
+text-align: left;
+color: #7B8181;
+}}
+"""
+st.markdown(page_bg_head, unsafe_allow_html=True)
+
 page_bg_img= f"""
 <style>
 .st-emotion-cache-1yiq2ps{{
