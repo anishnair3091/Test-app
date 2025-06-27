@@ -30,7 +30,7 @@ if st.sidebar.button('Home', icon= '🏡'):
 	st.switch_page(Home)
 
 
-history_data= pd.read_csv(r'/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/History.csv')
+history_data= pd.read_csv('DATA/History.csv')
 
 
 performance_data= history_data[['AMC_Company', 'Ticket_ref', 'Response_time_difference']].groupby(['AMC_Company']).count().reset_index()
@@ -43,7 +43,7 @@ perform_data= pd.concat([performance_data, dfs], axis=1)
 
 perform_data.columns= ['AMC_Company', 'Ticket_ref', 'Response_time_difference', 'Performance']
 
-AMC_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/AMC.csv")
+AMC_data= pd.read_csv("DATA/AMC.csv")
 
 times= []
 data= history_data[history_data['Status'] == 'Open']
@@ -132,10 +132,7 @@ for date, time in zip(history_data['Date'], history_data['Time']):
 history_data['Datetime']= Datetime
 
 
-team_list= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/BMTS-APP/Service/Team_list.csv", skiprows=1)
-
-
-user_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/user_data.csv")
+user_data= pd.read_csv("DATA/user_data.csv")
 
 
 
@@ -158,7 +155,7 @@ def authentication_status():
 
     # Load passwords
 
-    file_path = Path("/Users/anishmnair/Desktop/Streamlit/My_new_app/BMTS-APP/secrets/hashed_pw.pkl")
+    file_path = Path("secrets/hashed_pw.pkl")
     with file_path.open('rb') as file:
         hashed_passwords= pickle.load(file)
 
@@ -188,7 +185,7 @@ def user_type():
     return usertype
 
 def load_data(nrows):
-	data = pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/History.csv")
+	data = pd.read_csv("DATA/History.csv")
 	if option11 != None:
 		data1 = data[data['AMC_Company'] == option11]
 		return data1 
