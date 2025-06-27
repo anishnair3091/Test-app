@@ -14,3 +14,4 @@ streamlit_authenticator==0.3.3
 streamlit_extras==0.7.1
 streamlit_folium==0.25.0
 email-validator==2.2.0
+onnxruntime==1.21.1
