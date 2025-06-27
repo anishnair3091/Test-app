@@ -82,6 +82,13 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
 
+def logout():
+	signout= st.logout()
+	if signout:
+		page= st.switch_page("Main_page-copy.py")
+		return page
+				     
+
 if usertype() == 'customer' or usertype() == 'Admin':
 
 
@@ -206,6 +213,6 @@ if usertype() == 'customer' or usertype() == 'Admin':
 						st.switch_page("pages/reports.py")
 
 if st.sidebar.button('Logout'):
-	st.logout()
+	logout()
 
 
