@@ -17,7 +17,7 @@ st.set_page_config(layout='wide', initial_sidebar_state='collapsed')
 
 Home= st.Page('pages/Supplier-Home-page.py', title= 'Home page', icon= '🏡')
 
-user_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/user_data.csv")
+user_data= pd.read_csv("DATA/user_data.csv")
 
 def authentication_status():
 	users= []
@@ -36,7 +36,7 @@ def authentication_status():
 
 	# Load passwords
 
-	file_path = Path("/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/secrets/hashed_pw.pkl")
+	file_path = Path("secrets/hashed_pw.pkl")
 	with file_path.open('rb') as file:
 	    hashed_passwords= pickle.load(file)
 
@@ -92,8 +92,7 @@ if usertype() == 'supplier':
 
 	st.markdown("<h1 style='text-align: center; color : #625656; font-size: 15px; '> Please choose any of the below options!</h1>", unsafe_allow_html= True)
 
-	st.markdown('<style>' + open('/Users/anishmnair/Desktop/Streamlit/My_new_app/BMTS-APP/html/styles/styles.css').read() + '</style>', unsafe_allow_html=True)
-
+	
 	row1= st.columns(1)
 
 	for col in row1:
