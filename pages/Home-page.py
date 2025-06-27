@@ -14,11 +14,11 @@ from streamlit_extras.stylable_container import stylable_container
 
 
 #Main Page config setup
-st.set_page_config(layout='wide', initial_sidebar_state='collapsed')
+st.set_page_config(page_title= "Customer Home Page", layout='wide', initial_sidebar_state='collapsed')
 
 # User Authentication
 
-user_data= pd.read_csv("user_data.csv")
+user_data= pd.read_csv("DATA/user_data.csv")
 
 def authentication_status():
 	users= []
