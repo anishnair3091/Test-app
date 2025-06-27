@@ -78,6 +78,8 @@ page_bg_img= f"""
 }}
 </style>
 """
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 
 
 Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
