@@ -29,7 +29,7 @@ if st.sidebar.button('Home', icon= '🏡'):
 	st.switch_page(Home)
 
 
-enquiry_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/enquiry_data.csv")
+enquiry_data= pd.read_csv("DATA/enquiry_data.csv")
 
 
 group = enquiry_data[['Company', 'SLA met', 'SLA not met']].groupby(['Company']).sum().reset_index()
@@ -40,7 +40,7 @@ group['Enquiry_count']= group1['Enquiry_ref']
 
 group['SLA marks']= group['SLA met']/group['Enquiry_count']
 
-AMC_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/AMC.csv")
+AMC_data= pd.read_csv("DATA/AMC.csv")
 
 
 times2= []
@@ -117,11 +117,7 @@ for date, time in zip(enquiry_data['Created date'], enquiry_data['Time']):
 
 enquiry_data['Datetime']= Datetime
 
-
-team_list= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/BMTS-APP/Service/Team_list.csv", skiprows=1)
-
-
-user_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/user_data.csv")
+user_data= pd.read_csv("DATA/user_data.csv")
 
 
 option11= st.sidebar.selectbox('Supplier', index= None, options= AMC_data['AMC COMPANY'].unique(), placeholder='Select the supplier name', accept_new_options= True)
@@ -144,7 +140,7 @@ def authentication_status():
 
     # Load passwords
 
-    file_path = Path("/Users/anishmnair/Desktop/Streamlit/My_new_app/BMTS-APP/secrets/hashed_pw.pkl")
+    file_path = Path("secrets/hashed_pw.pkl")
     with file_path.open('rb') as file:
         hashed_passwords= pickle.load(file)
 
@@ -172,7 +168,7 @@ def user_type():
     return usertype
 
 def load_data(nrows):
-	data = pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/enquiry_data.csv")
+	data = pd.read_csv("DATA/enquiry_data.csv")
 	if option11 != None:
 		data1 = data[data['Company'] == option11]
 		return data1 
