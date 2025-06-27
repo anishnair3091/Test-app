@@ -38,7 +38,7 @@ def authentication_status():
 
     # Load passwords
 
-    file_path = Path("/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/secrets/hashed_pw.pkl")
+    file_path = Path("secrets/hashed_pw.pkl")
     with file_path.open('rb') as file:
         hashed_passwords= pickle.load(file)
 
@@ -61,9 +61,9 @@ if st.session_state['authentication_status']:
 data= our_data
 text1= text 
 
-history_data= pd.read_csv(r'/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/History.csv')
+history_data= pd.read_csv('DATA/History.csv')
 
-AMC_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/AMC.csv")
+AMC_data= pd.read_csv("DATA/AMC.csv")
 
 
 option11= st.sidebar.pills('Select the Supplier', options= data['AMC_Company'].unique(), selection_mode='single')
