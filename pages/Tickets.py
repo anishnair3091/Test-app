@@ -6,7 +6,6 @@ import plotly.express as px
 import streamlit as st
 import streamlit.components.v1 as components
 from PIL import Image
-from st_on_hover_tabs import on_hover_tabs 
 import time
 from rembg import remove
 import extra_streamlit_components as stx  
@@ -41,16 +40,16 @@ if st.sidebar.button('Home', icon= '🏡'):
 i = 244 
 
 
-history_data= pd.read_csv(r'/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/History.csv')
+history_data= pd.read_csv('DATA/History.csv')
 
 
-troubles_types= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/troubles with priority.csv")
+troubles_types= pd.read_csv("DATA/troubles with priority.csv")
 
-priority_response= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/priority_response.csv")
+priority_response= pd.read_csv("DATA/priority_response.csv")
 
-user_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/user_data.csv")
+user_data= pd.read_csv("DATA/user_data.csv")
 
-amc_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/AMC.csv")
+amc_data= pd.read_csv("DATA/AMC.csv")
 
 
 
@@ -73,7 +72,7 @@ def authentication_status():
 
     # Load passwords
 
-    file_path = Path("/Users/anishmnair/Desktop/Streamlit/My_new_app/BMTS-APP/secrets/hashed_pw.pkl")
+    file_path = Path("secrets/hashed_pw.pkl")
     with file_path.open('rb') as file:
         hashed_passwords= pickle.load(file)
 
@@ -419,7 +418,7 @@ Thanks & Regards
 	 				
 					
 					
-				history_data.to_csv('/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/History.csv', index= False)
+				history_data.to_csv('DATA/History.csv', index= False)
 
 	
 
