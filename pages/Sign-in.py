@@ -7,7 +7,7 @@ import time
 
 #Page configuration setup
 
-st.set_page_config(page_title= 'Sign-in', layout='centered', initial_sidebar_state= 'expanded', menu_items= "Get help")
+st.set_page_config(page_title= 'Sign-in', layout='centered', initial_sidebar_state= 'expanded')
 
 # User Authentication
 
