@@ -22,14 +22,6 @@ from datetime import date
 
 st.set_page_config('Tickets_Dashboard', layout='wide', initial_sidebar_state= 'auto')
 
-st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
-
-Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
-
-if st.sidebar.button('Home', icon= '🏡'):
-	st.switch_page(Home)
-
-
 page_bg_head= f"""
 <p>P2S</p>
 <style>
@@ -40,6 +32,16 @@ font-size:20px;
 }}
 """
 st.markdown(page_bg_head, unsafe_allow_html=True)
+
+st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
+
+Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
+
+if st.sidebar.button('Home', icon= '🏡'):
+	st.switch_page(Home)
+
+
+
 
 history_data= pd.read_csv('DATA/History.csv')
 
