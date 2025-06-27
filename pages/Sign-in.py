@@ -56,12 +56,12 @@ if authentication_status == False:
 if authentication_status == True:
     st.sidebar.write(f'Welcome **{name}**')
     if user_type() == 'customer':
-        st.switch_page("pages/Home-page.py")
+        st.write("pages/Home-page.py")
     elif user_type() == 'supplier':
-        st.switch_page("pages/Supplier-Home-page.py")
+        st.write("pages/Supplier-Home-page.py")
     
     elif user_type() == 'Admin':
-        st.switch_page("pages/admin_page.py")
+        st.write("pages/admin_page.py")
     else:
         st.error("Invalid username/password")
         
@@ -70,4 +70,4 @@ if authentication_status == True:
 
 
 if st.sidebar.button('Main'):
-    st.switch_page('Main_page-copy.py')
+    st.write('Main_page-copy.py')
