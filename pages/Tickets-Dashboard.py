@@ -22,8 +22,6 @@ from datetime import date
 
 st.set_page_config('Tickets_Dashboard', layout='wide', initial_sidebar_state= 'auto')
 
-st.header("P2S")
-
 st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
 
 Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
