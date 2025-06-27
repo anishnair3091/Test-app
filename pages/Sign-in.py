@@ -2,7 +2,8 @@ import streamlit as st
 import streamlit_authenticator as stauth
 import pandas as pd
 from pathlib import Path 
-import pickle   
+import pickle
+import time
 
 # User Authentication
 
@@ -69,7 +70,10 @@ if authentication_status == True:
 
 
 if st.sidebar.button('Logout'):
-    st.switch_page('pages/Sign-in.py')
+    time.sleep(1)
     st.logout()
+    time.sleep(.5)
+    st.switch_page('pages/Sign-in.py')
+    
 if st.sidebar.button('Main'):
     st.switch_page('Main_page-copy.py')
