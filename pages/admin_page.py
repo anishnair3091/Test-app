@@ -11,7 +11,7 @@ from pathlib import Path
 import streamlit_authenticator as stauth 
 import pickle
 
-user_data= pd.read_csv(r"/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/DATA/user_data.csv")
+user_data= pd.read_csv("DATA/user_data.csv")
 
 def authentication_status():
 	users= []
@@ -30,7 +30,7 @@ def authentication_status():
 
 	# Load passwords
 
-	file_path = Path("/Users/anishmnair/Desktop/Streamlit/My_new_app/Customer-app/New/secrets/hashed_pw.pkl")
+	file_path = Path("secrets/hashed_pw.pkl")
 	with file_path.open('rb') as file:
 	    hashed_passwords= pickle.load(file)
 
