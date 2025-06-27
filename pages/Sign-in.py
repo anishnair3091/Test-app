@@ -31,7 +31,7 @@ usertype= usertypes
 
 # Load passwords
 
-file_path = Path("pages/hashed_pw.pkl")
+file_path = Path("secrets/hashed_pw.pkl")
 with file_path.open('rb') as file:
     hashed_passwords= pickle.load(file)
 
