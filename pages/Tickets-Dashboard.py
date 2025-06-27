@@ -29,6 +29,18 @@ Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
 if st.sidebar.button('Home', icon= '🏡'):
 	st.switch_page(Home)
 
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+page_bg_head= f"""
+<p>P2S</p>
+<style>
+.st-emotion-cache-gkoddq{{
+text-align: left;
+color: #7B8181;
+font-size:20px;
+}}
+"""
+st.markdown(page_bg_head, unsafe_allow_html=True)
 
 history_data= pd.read_csv('DATA/History.csv')
 
