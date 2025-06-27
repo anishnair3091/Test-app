@@ -5,6 +5,10 @@ from pathlib import Path
 import pickle
 import time
 
+#Page configuration setup
+
+st.set_page_config(page_title= 'Sign-in', layout='centered', initial_sidebar_state= 'expanded', menu_items= "Get help")
+
 # User Authentication
 
 user_data= pd.read_csv("user_data.csv")
