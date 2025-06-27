@@ -22,16 +22,7 @@ from datetime import date
 
 st.set_page_config('Tickets_Dashboard', layout='wide', initial_sidebar_state= 'auto')
 
-page_bg_head= f"""
-<p>P2S</p>
-<style>
-.st-emotion-cache-gkoddq{{
-text-align: left;
-color: #7B8181;
-font-size:20px;
-}}
-"""
-st.markdown(page_bg_head, unsafe_allow_html=True)
+st.header("P2S")
 
 st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
 
