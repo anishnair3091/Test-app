@@ -74,10 +74,8 @@ if authentication_status == True:
 
 
 if st.sidebar.button('Logout'):
-    time.sleep(1)
     st.logout()
-    time.sleep(.5)
-    st.switch_page('pages/Sign-in.py')
+st.switch_page('pages/Sign-in.py')
     
 if st.sidebar.button('Main'):
     st.switch_page('Main_page-copy.py')
