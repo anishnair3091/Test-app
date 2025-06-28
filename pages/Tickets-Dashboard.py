@@ -95,10 +95,10 @@ if st.session_state['authentication_status']:
 		  <head>
 		  <style>
 		    h3{
-		    word-spacing:50px;  
+		    word-spacing:500px;  
 		    }
 		    :root {
-		  --header-height: 500px;
+		  --header-height: 50px;
 		  --header-height-padded: 59px;
 		}
 		
