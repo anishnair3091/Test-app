@@ -304,6 +304,9 @@ if st.session_state['authentication_status']:
 		   float: right;
 		   position: right;
 		   }""",
+			]
+		):
+			col2.button(f"{userlogin()}")
 				
 		
 		st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
