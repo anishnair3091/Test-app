@@ -90,12 +90,12 @@ if st.session_state['authentication_status']:
 				return string
 
 
-		st.html("""
+		st.html(f"""
 		<html>
 		  <head>
 		  <style>
 		    h3{
-		    word-spacing:500px;  
+		    word-spacing:1000px;  
 		    }
 		    :root {
 		  --header-height: 50px;
