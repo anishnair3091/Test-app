@@ -16,6 +16,11 @@ from streamlit_extras.stylable_container import stylable_container
 #Main Page config setup
 st.set_page_config(page_title= "Customer Home Page", layout='wide', initial_sidebar_state='collapsed')
 
+main_page= st.Page("Main_page-copy.py", title= 'Main page', icon= '🏢')
+
+if st.sidebar.button("MAIN", icon= "🏡", type='tertiary'):
+	st.switch_page("Main_page-copy.py")
+
 # User Authentication
 
 user_data= pd.read_csv("DATA/user_data.csv")
