@@ -105,7 +105,7 @@ if st.session_state['authentication_status']:
 		    background-orgin: content-box;
 		    background-color: grey;
 		    padding-top: var(--header-height);
-		    content: "P2S SOLUTIONS"
+		    content: "P2S SOLUTIONS";
 		}
 		  </style>
 		</head>
