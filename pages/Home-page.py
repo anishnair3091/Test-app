@@ -18,6 +18,7 @@ st.set_page_config(page_title= "Customer Home Page", layout='wide', initial_side
 
 main_page= st.Page("Main_page-copy.py", title= 'Main page', icon= '🏢')
 
+
 if st.sidebar.button("MAIN", icon= "🏡", type='tertiary'):
 	st.switch_page("Main_page-copy.py")
 
@@ -96,7 +97,26 @@ if usertype() == 'customer' or usertype() == 'Admin':
 
 	st.markdown("<h1 style='text-align: center; color : #7B8181; font-size : 40px '> WELCOME TO COMPANY SERVICE PORTAL</h1>", unsafe_allow_html= True)
 
+	def userlogin():
+		for string in name:
+			return string
 	
+	col1, col2, col3, col4, col5, col6, col7, col8= st.columns(8)
+
+	col1.html("<h3 style='text-align: center; color: #888E8E; text-shadow: 5px, 5px, 5px: '>P2S SOLUTIONS</h3>")
+	with stylable_container(
+		key= 'buttoncl8',
+		css_styles=[
+			"""
+   p{
+   font-size:15px;
+   text-align:center;
+   text-shadow: 5px 5px 5px;
+   color: 
+   }
+		]
+	):
+		col8.button(f"{string}")
 
 	with stylable_container(
 					key= 'button2',
