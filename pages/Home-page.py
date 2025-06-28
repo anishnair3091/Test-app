@@ -217,7 +217,7 @@ if usertype() == 'customer' or usertype() == 'Admin':
 authenticator= create_authenticator()
 
 if st.sidebar.button('Logout'):
-	authenticator.logout(location='unrendered')
+	st.logout(location='unrendered')
 	st.experimental_rerun()
 
 
