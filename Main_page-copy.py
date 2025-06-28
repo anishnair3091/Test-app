@@ -30,6 +30,8 @@ main_page= st.Page("Main_page-copy.py", title= 'Main page', icon= '🏢', )
 
 col1, col2, col3, col4, col5, col6, col7, col8, col9, col10= st.columns(10)
 
+col1.html("<h4 style= 'text-align: center; color:#888E8E; text-shadow: 5px 5px 5px; font-family: serif;'>P2S<h4/>")
+
 with col8:
 	st.page_link('https://www.bmts.ae', label= 'WEBSITE', icon= "🌍")
 		
