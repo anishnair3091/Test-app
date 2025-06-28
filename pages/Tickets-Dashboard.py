@@ -90,7 +90,7 @@ if st.session_state['authentication_status']:
 				return string
 
 
-		st.html("""
+		st.html(f'''
 		<html>
 		  <head>
 		  <style>
@@ -112,9 +112,9 @@ if st.session_state['authentication_status']:
 		  </style>
 		</head>
 		<body>
-		  <h3 style= "text-align: left; color: black; text-shadow: 5px 5px 5px;">P2S_SOLUTIONS f"{userlogin()}"</h3>
+		  <h3 style= "text-align: left; color: black; text-shadow: 5px 5px 5px;">P2S_SOLUTIONS {userlogin()}</h3>
 		</body>
-		</html>""")
+		</html>''')
 		
 
 		
