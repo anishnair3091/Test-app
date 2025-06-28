@@ -94,6 +94,9 @@ if st.session_state['authentication_status']:
 		<html>
 		  <head>
 		  <style>
+		    h3{
+		    word-spacing:50px;  
+		    }
 		    :root {
 		  --header-height: 50px;
 		  --header-height-padded: 59px;
@@ -105,17 +108,16 @@ if st.session_state['authentication_status']:
 		    background-orgin: content-box;
 		    background-color: grey;
 		    padding-top: var(--header-height);
-		    content: "P2S SOLUTIONS";
 		}
 		  </style>
 		</head>
 		<body>
-		  <h3 style= "text-align: left; color: #888E8E; text-shadow: 5px 5px 5px;">P2S SOLUTIONS   </h3>
+		  <h3 style= "text-align: left; color: #888E8E; text-shadow: 5px 5px 5px;">P2S SOLUTIONS {userlogin()}</h3>
 		</body>
 		</html>""")
 		
 
-		st.button(f"{userlogin()}")
+		
 				
 		
 		st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
