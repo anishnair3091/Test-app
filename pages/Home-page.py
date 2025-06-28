@@ -214,7 +214,6 @@ if usertype() == 'customer' or usertype() == 'Admin':
 					if st.button("**Reports**", icon='📝', use_container_width=True, type='tertiary'):
 						st.switch_page("pages/reports.py")
 
-authenticator= create_authenticator()
 
 if st.sidebar.button('Logout'):
 	st.logout(location='unrendered')
