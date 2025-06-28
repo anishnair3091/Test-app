@@ -59,6 +59,7 @@ name, authentication_status, username= authenticator.login('main', 'Login')
 if authentication_status == True:
 	name= st.session_state["name"]
 	st.sidebar.write(f'Welcome {name}')
+	authenticator.logout("LOGOUT", "sidebar")
 
 def usertype():
 	data= user_data[user_data['Username'] == name]
@@ -208,6 +209,6 @@ if usertype() == 'customer' or usertype() == 'Admin':
 					if st.button("**Reports**", icon='📝', use_container_width=True, type='tertiary'):
 						st.switch_page("pages/reports.py")
 
-authenticator.logout("LOGOUT", "sidebar")
+
 
 
