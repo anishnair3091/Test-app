@@ -94,9 +94,6 @@ Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
 
 if usertype() == 'customer' or usertype() == 'Admin':
 
-
-	st.markdown("<h1 style='text-align: center; color : #7B8181; font-size : 40px '> WELCOME TO COMPANY SERVICE PORTAL</h1>", unsafe_allow_html= True)
-
 	def userlogin():
 		for string in name:
 			return string
@@ -121,6 +118,9 @@ if usertype() == 'customer' or usertype() == 'Admin':
 		]
 	):
 		col8.button(f"{userlogin()}")
+
+	st.markdown("<h1 style='text-align: center; color : #7B8181; font-size : 40px '> WELCOME TO COMPANY SERVICE PORTAL</h1>", unsafe_allow_html= True)
+
 
 	with stylable_container(
 					key= 'button2',
