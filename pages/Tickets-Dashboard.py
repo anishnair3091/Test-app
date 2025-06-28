@@ -90,10 +90,11 @@ if st.session_state['authentication_status']:
 				return string
 
 
-		st.markdown("""
-		<style>
-		
-		:root {
+		st.html("""
+		<html>
+		  <head>
+		  <style>
+		    :root {
 		  --header-height: 50px;
 		  --header-height-padded: 59px;
 		}
@@ -105,19 +106,14 @@ if st.session_state['authentication_status']:
 		    background-color: grey;
 		    padding-top: var(--header-height);
 		}
-		button{
-		cursor: pointer;
-	        border-radius:80px;
-	        float: right;
-	        position: right;
-		}
-		</style>
-		""", unsafe_allow_html=True)
+		  </style>
+		</head>
+		<body>
+		  <h3 style= "text-align: left; color: #888E8E; text-shadow: 5px 5px 5px;">P2S SOLUTIONS   </h3>
+		</body>
+		</html>)
 		
-		with st.sidebar:
-		    st.markdown("sidebar")
-		
-		st.markdown("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>", unsafe_allow_html= True)
+
 		st.button(f"{userlogin()}")
 				
 		
