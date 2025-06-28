@@ -1,2 +1,5 @@
 [client]
-showSidebarNavigation = false
+showSidebarNavigation = 
+
+[auth]
+redirect_uri= "https://my-personal-test-app.streamlit.app/"
