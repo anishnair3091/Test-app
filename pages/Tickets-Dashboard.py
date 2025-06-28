@@ -22,8 +22,6 @@ from datetime import date
 
 st.set_page_config('Tickets_Dashboard', layout='wide', initial_sidebar_state= 'auto')
 
-st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
-
 Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
 
 if st.sidebar.button('Home', icon= '🏡'):
@@ -140,37 +138,37 @@ user_data= pd.read_csv("DATA/user_data.csv")
 
 # User Authentication
 
-def authentication_status():
-    users= []
-    user_ids= []
-    usertypes= []
-    for user, ids, types in zip(user_data.Username, user_data.User_id, user_data.User_type):
-        users.append(user)
-        user_ids.append(ids)
-        usertypes.append(types)
 
-    # Load credentials except passwords
+users= []
+user_ids= []
+usertypes= []
+for user, ids, types in zip(user_data.Username, user_data.User_id, user_data.User_type):
+users.append(user)
+user_ids.append(ids)
+usertypes.append(types)
 
-    names= users
-    usernames= user_ids
-    usertype= usertypes
+# Load credentials except passwords
 
-    # Load passwords
+names= users
+usernames= user_ids
+usertype= usertypes
 
-    file_path = Path("secrets/hashed_pw.pkl")
-    with file_path.open('rb') as file:
-        hashed_passwords= pickle.load(file)
+# Load passwords
 
-    # Transform credentials as a dictionary
+file_path = Path("secrets/hashed_pw.pkl")
+with file_path.open('rb') as file:
+hashed_passwords= pickle.load(file)
 
-    credentials = {"usernames":{}}
-    for un, name, pswd, char in zip(usernames, names, hashed_passwords, usertype):   
-        user_dict = {"name":name, "password" : pswd, "role":char}
-        credentials["usernames"].update({un:user_dict})
+# Transform credentials as a dictionary
 
-    authenticator= stauth.Authenticate(credentials, "", "", cookie_expiry_days=30)
-    name, authentication_status, username= authenticator.login('main', 'Login')
-    return authentication_status
+credentials = {"usernames":{}}
+for un, name, pswd, char in zip(usernames, names, hashed_passwords, usertype):   
+user_dict = {"name":name, "password" : pswd, "role":char}
+credentials["usernames"].update({un:user_dict})
+
+authenticator= stauth.Authenticate(credentials, "", "", cookie_expiry_days=30)
+name, authentication_status, username= authenticator.login('main', 'Login')
+
 
 # Defining name
 
@@ -178,13 +176,12 @@ if authentication_status() == True:
     name= st.session_state["name"]
     st.sidebar.write(f'Welcome **{name}**')
 
-option11= st.sidebar.pills('Select the Supplier', options= history_data['AMC_Company'].unique(), selection_mode='single')
-    
 def user_type():
     data = user_data[user_data['Username'] == name]
     for user in data.User_type:
         usertype= user
-    return usertype
+	return usertype
+
 
 def load_data(nrows):
 	data = pd.read_csv("DATA/History.csv")
@@ -284,7 +281,39 @@ if st.session_state['authentication_status']:
 	if user_type() == 'customer' or user_type() == 'Admin':
 
 
+		def userlogin():
+			for string in name:
+				return string
+	
+		col1, col2= st.columns([.95, .05])
 		
+		col1.html("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>")
+		with stylable_container(
+			key= 'buttoncl8',
+			css_styles=[
+				"""
+		   p{
+		   font-size:15px;
+		   text-align:center;
+		   color: #888E8E;
+		   }""",
+					"""
+		   button{
+		   cursor: pointer;
+		   border-radius:50px;
+		   float: right;
+		   position: right;
+		   }""",
+				
+		
+		st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
+		
+				
+		option11= st.sidebar.pills('Select the Supplier', options= history_data['AMC_Company'].unique(), selection_mode='single')
+		
+		
+		
+				
 		container= st.container(height= 105, border=False)
 		with container:
 
