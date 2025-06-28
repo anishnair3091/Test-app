@@ -116,8 +116,7 @@ if st.session_state['authentication_status']:
 		st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
 		
 				
-		option11= st.sidebar.pills('Select the Supplier', options= history_data['AMC_Company'].unique(), selection_mode='single')
-
+		
 		history_data= pd.read_csv('DATA/History.csv')
 
 
@@ -218,6 +217,9 @@ if st.session_state['authentication_status']:
 		    Datetime.append(my_datetime)
 		
 		history_data['Datetime']= Datetime
+
+		option11= st.sidebar.pills('Select the Supplier', options= history_data['AMC_Company'].unique(), selection_mode='single')
+
 
 		def load_data(nrows):
 			data = pd.read_csv("DATA/History.csv")
