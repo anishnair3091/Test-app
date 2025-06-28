@@ -98,9 +98,9 @@ if usertype() == 'customer' or usertype() == 'Admin':
 		for string in name:
 			return string
 	
-	col1, col2, col3, col4, col5, col6, col7, col8= st.columns(8)
+	col1, col2= st.columns([.95, .05])
 
-	col1.html("<h3 style='text-align: center; color: #888E8E; text-shadow: 5px, 5px, 5px: '>P2S SOLUTIONS</h3>")
+	col1.html("<h3 style='text-align: right; color: #888E8E; text-shadow: 5px 5px 5px: '>P2S SOLUTIONS</h3>")
 	with stylable_container(
 		key= 'buttoncl8',
 		css_styles=[
@@ -114,10 +114,11 @@ if usertype() == 'customer' or usertype() == 'Admin':
    button{
    cursor: pointer;
    border-radius:50px;
+   float: right;
    }""",
 		]
 	):
-		col8.button(f"{userlogin()}")
+		col2.button(f"{userlogin()}")
 
 	st.markdown("<h1 style='text-align: center; color : #7B8181; font-size : 40px '> WELCOME TO COMPANY SERVICE PORTAL</h1>", unsafe_allow_html= True)
 
