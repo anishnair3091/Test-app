@@ -34,8 +34,8 @@ with col8:
 	st.page_link('https://www.bmts.ae', label= 'WEBSITE', icon= "🌍")
 		
 with col9:
-	if st.button("SIGN-IN", icon= ':material/login:', use_container_width=True, type='tertiary'):
-		st.switch_page('pages/Sign-in.py')
+	st.page_link('pages/Sign-in.py', label= "SIGN-IN", icon= ':material/login:')
+	
 
 
 
