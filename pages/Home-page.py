@@ -215,8 +215,6 @@ if usertype() == 'customer' or usertype() == 'Admin':
 						st.switch_page("pages/reports.py")
 
 if st.sidebar.button('Logout'):
-	st.switch_page("Main_page-copy.py")
-	time.sleep(0.5)
 	st.logout()
 
 
