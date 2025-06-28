@@ -64,7 +64,7 @@ def usertype():
 	data= user_data[user_data['Username'] == name]
 	for user in data.User_type:
 		user_type= user 
-	return user_type
+		return user_type
 
 page_bg_img= f"""
 <style>
@@ -83,12 +83,6 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
-
-def logout():
-	signout= st.logout()
-	if signout:
-		page= st.switch_page("Main_page-copy.py")
-		return page
 				     
 
 if usertype() == 'customer' or usertype() == 'Admin':
