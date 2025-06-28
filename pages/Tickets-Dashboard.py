@@ -85,6 +85,39 @@ def user_type():
 if st.session_state['authentication_status']:
 	if user_type() == 'customer' or user_type() == 'Admin':
 
+		def userlogin():
+			for string in name:
+				return string
+	
+		col1, col2= st.columns([.95, .05])
+		
+		col1.html("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>")
+		with stylable_container(
+			key= 'buttoncl8',
+			css_styles=[
+				"""
+		   p{
+		   font-size:15px;
+		   text-align:center;
+		   color: #888E8E;
+		   }""",
+					"""
+		   button{
+		   cursor: pointer;
+		   border-radius:50px;
+		   float: right;
+		   position: right;
+		   }""",
+			]
+		):
+			col2.button(f"{userlogin()}")
+				
+		
+		st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
+		
+				
+		option11= st.sidebar.pills('Select the Supplier', options= history_data['AMC_Company'].unique(), selection_mode='single')
+
 		history_data= pd.read_csv('DATA/History.csv')
 
 
@@ -277,42 +310,6 @@ if st.session_state['authentication_status']:
 		
 		data= load_data(100)
 		
-		def userlogin():
-			for string in name:
-				return string
-	
-		col1, col2= st.columns([.95, .05])
-		
-		col1.html("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>")
-		with stylable_container(
-			key= 'buttoncl8',
-			css_styles=[
-				"""
-		   p{
-		   font-size:15px;
-		   text-align:center;
-		   color: #888E8E;
-		   }""",
-					"""
-		   button{
-		   cursor: pointer;
-		   border-radius:50px;
-		   float: right;
-		   position: right;
-		   }""",
-			]
-		):
-			col2.button(f"{userlogin()}")
-				
-		
-		st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
-		
-				
-		option11= st.sidebar.pills('Select the Supplier', options= history_data['AMC_Company'].unique(), selection_mode='single')
-		
-		
-		
-				
 		container= st.container(height= 105, border=False)
 		with container:
 
