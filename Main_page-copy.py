@@ -28,14 +28,14 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 main_page= st.Page("Main_page-copy.py", title= 'Main page', icon= '🏢', )
 
-col1, col2, col3, col4, col5, col6, col7, col8, col9, col10= st.columns(10)
+col1, col2, col3, col4, col5, col6, col7, col8= st.columns(8)
 
 col1.html("<h3 style= 'text-align: center; color:#888E8E; text-shadow: 5px 5px 5px;'>P2S SOLUTIONS<h3/>")
 
-with col8:
+with col7:
 	st.page_link('https://www.bmts.ae', label= 'WEBSITE', icon= "🌍")
 		
-with col9:
+with col8:
 	st.page_link('pages/Sign-in.py', label= "SIGN-IN", icon= ':material/login:')
 	
 
