@@ -115,6 +115,7 @@ if usertype() == 'customer' or usertype() == 'Admin':
    cursor: pointer;
    border-radius:50px;
    float: right;
+   position: right;
    }""",
 		]
 	):
