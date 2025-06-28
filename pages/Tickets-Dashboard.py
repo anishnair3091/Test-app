@@ -113,7 +113,7 @@ if st.session_state['authentication_status']:
 		with st.sidebar:
 		    st.markdown("sidebar")
 		
-		st.markdown("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>, unsafe_allow_html= True")
+		st.markdown("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>", unsafe_allow_html= True)
 		col1, col2= st.columns([.95, .05])
 		
 		col1.html("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>")
