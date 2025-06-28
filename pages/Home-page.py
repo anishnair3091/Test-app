@@ -20,41 +20,41 @@ st.set_page_config(page_title= "Customer Home Page", layout='wide', initial_side
 
 user_data= pd.read_csv("DATA/user_data.csv")
 
-def authentication_status():
-	users= []
-	user_ids= []
-	usertypes= []
-	for user, ids, types in zip(user_data.Username, user_data.User_id, user_data.User_type):
-	    users.append(user)
-	    user_ids.append(ids)
-	    usertypes.append(types)
 
-	# Load credentials except passwords
+users= []
+user_ids= []
+usertypes= []
+for user, ids, types in zip(user_data.Username, user_data.User_id, user_data.User_type):
+    users.append(user)
+    user_ids.append(ids)
+    usertypes.append(types)
 
-	names= users
-	usernames= user_ids
-	usertype= usertypes
+# Load credentials except passwords
 
-	# Load passwords
+names= users
+usernames= user_ids
+usertype= usertypes
 
-	file_path = Path("secrets/hashed_pw.pkl")
-	with file_path.open('rb') as file:
-	    hashed_passwords= pickle.load(file)
+# Load passwords
 
-
-	# Transform credentials as a dictionary
-
-	credentials = {"usernames":{}}
-	for un, name, pswd, char in zip(usernames, names, hashed_passwords, usertype):   
-	    user_dict = {"name":name, "password" : pswd, "role":char}
-	    credentials["usernames"].update({un:user_dict})
-
-	authenticator= stauth.Authenticate(credentials, "", "", cookie_expiry_days=0)
+file_path = Path("secrets/hashed_pw.pkl")
+with file_path.open('rb') as file:
+    hashed_passwords= pickle.load(file)
 
 
-	name, authentication_status, username= authenticator.login('main', 'Login')
+# Transform credentials as a dictionary
 
-	return authentication_status
+credentials = {"usernames":{}}
+for un, name, pswd, char in zip(usernames, names, hashed_passwords, usertype):   
+    user_dict = {"name":name, "password" : pswd, "role":char}
+    credentials["usernames"].update({un:user_dict})
+
+authenticator= stauth.Authenticate(credentials, "", "", cookie_expiry_days=0)
+
+
+name, authentication_status, username= authenticator.login('main', 'Login')
+
+	
 
 if authentication_status() == True:
 	name= st.session_state["name"]
@@ -215,8 +215,6 @@ if usertype() == 'customer' or usertype() == 'Admin':
 						st.switch_page("pages/reports.py")
 
 
-if st.sidebar.button('Logout'):
-	st.logout(location='unrendered')
-	st.experimental_rerun()
+authenticator.logout("LOGOUT", "sidebar")
 
 
