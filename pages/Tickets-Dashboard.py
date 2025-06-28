@@ -329,7 +329,7 @@ if st.session_state['authentication_status']:
 					css_styles=[
 					"""
 					p {
-					font-size: 21px
+					font-size: 21px;
 					}""",
 
 					""" 
