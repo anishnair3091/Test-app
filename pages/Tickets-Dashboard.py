@@ -157,14 +157,14 @@ for user, ids, types in zip(user_data.Username, user_data.User_id, user_data.Use
 	
 	file_path = Path("secrets/hashed_pw.pkl")
 	with file_path.open('rb') as file:
-	hashed_passwords= pickle.load(file)
+		hashed_passwords= pickle.load(file)
 	
 	# Transform credentials as a dictionary
 	
 	credentials = {"usernames":{}}
 	for un, name, pswd, char in zip(usernames, names, hashed_passwords, usertype):   
-	user_dict = {"name":name, "password" : pswd, "role":char}
-	credentials["usernames"].update({un:user_dict})
+		user_dict = {"name":name, "password" : pswd, "role":char}
+		credentials["usernames"].update({un:user_dict})
 	
 	authenticator= stauth.Authenticate(credentials, "", "", cookie_expiry_days=30)
 	name, authentication_status, username= authenticator.login('main', 'Login')
