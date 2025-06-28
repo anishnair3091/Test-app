@@ -56,7 +56,7 @@ name, authentication_status, username= authenticator.login('main', 'Login')
 
 	
 
-if authentication_status() == True:
+if authentication_status == True:
 	name= st.session_state["name"]
 	st.sidebar.write(f'Welcome {name}')
 
