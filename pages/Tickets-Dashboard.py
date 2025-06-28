@@ -92,9 +92,7 @@ if st.session_state['authentication_status']:
 
 		st.markdown("""
 		<style>
-		p{
 		
-		}
 		:root {
 		  --header-height: 50px;
 		  --header-height-padded: 59px;
@@ -107,6 +105,12 @@ if st.session_state['authentication_status']:
 		    background-color: grey;
 		    padding-top: var(--header-height);
 		}
+		button{
+		cursor: pointer;
+	        border-radius:80px;
+	        float: right;
+	        position: right;
+		}
 		</style>
 		""", unsafe_allow_html=True)
 		
@@ -114,28 +118,7 @@ if st.session_state['authentication_status']:
 		    st.markdown("sidebar")
 		
 		st.markdown("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>", unsafe_allow_html= True)
-		col1, col2= st.columns([.95, .05])
-		
-		col1.html("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>")
-		with stylable_container(
-			key= 'buttoncl8',
-			css_styles=[
-				"""
-		   p{
-		   font-size:15px;
-		   text-align:center;
-		   color: #888E8E;
-		   }""",
-					"""
-		   button{
-		   cursor: pointer;
-		   border-radius:50px;
-		   float: right;
-		   position: right;
-		   }""",
-			]
-		):
-			col2.button(f"{userlogin()}")
+		st.button(f"{userlogin()}")
 				
 		
 		st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
