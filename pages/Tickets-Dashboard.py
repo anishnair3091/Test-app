@@ -111,7 +111,7 @@ if st.session_state['authentication_status']:
 		<body>
 		  <h3 style= "text-align: left; color: #888E8E; text-shadow: 5px 5px 5px;">P2S SOLUTIONS   </h3>
 		</body>
-		</html>)
+		</html>""")
 		
 
 		st.button(f"{userlogin()}")
@@ -325,64 +325,65 @@ if st.session_state['authentication_status']:
 			with col6:
 				
 				with stylable_container(
-					key= 'button1',
-					css_styles=[
-					"""
-					p {
-					font-size: 21px;
-					}""",
+    
+				key= 'button1',
+				css_styles=[
+				"""
+				p {
+				font-size: 21px;
+				}""",
 
-					""" 
-					button {
-					border: 1.5px solid #BACBEC;
-					color: #BACBEC;
-					font-size:30px;
-					text-align: left;
-					text-decoration: none;
-					display: inline-block;
-					transition-duration: 0.4s;
-					cursor: pointer;
-					position: left;
-					float: left;
-					text-align:center;
-					width: 180px;
-					height: 90px;
-					border-radius: 20px;
+				""" 
+				button {
+				border: 1.5px solid #BACBEC;
+				color: #BACBEC;
+				font-size:30px;
+				text-align: left;
+				text-decoration: none;
+				display: inline-block;
+				transition-duration: 0.4s;
+				cursor: pointer;
+				position: left;
+				float: left;
+				text-align:center;
+				width: 180px;
+				height: 90px;
+				border-radius: 20px;
 
-					}""",
-					"""
-					button {
-					background-color: white;
-					color: black;
-					text-color: #BACBEC;
-					border: 1.5px solid #04AA6D;
-					border-color:#BACBEC;
-					text-align: center;
-					width: 180px;
-					height: 100px;
-					border-radius: 30px;
-					padding-left:10px;
-					margin-right:30px;
-					margin-left:0px;
-					font-size:30px;
-					
-					}""",
-					"""
-					button:hover {
-					background-color: #BACBEC;
-					color: white;
-					font-weight:bolder;
-					border: 3.5px solid #BACBEC;
-					border-color: #BACBEC;
-					shadow: grey;
-					text-transform: blue;
-					
-					
-					}""",
-					
-					]
+				}""",
+				"""
+				button {
+				background-color: white;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid #04AA6D;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 180px;
+				height: 100px;
+				border-radius: 30px;
+				padding-left:10px;
+				margin-right:30px;
+				margin-left:0px;
+				font-size:30px;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: #BACBEC;
+				color: white;
+				font-weight:bolder;
+				border: 3.5px solid #BACBEC;
+				border-color: #BACBEC;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
 
-					):
+				):
 						option= st.button(f'''Total Tickets  
 							{data['Ticket_ref'].count()}''')
 						if option:
@@ -406,7 +407,7 @@ if st.session_state['authentication_status']:
 					css_styles=[
 					"""
 					p {
-					font-size: 21px
+					font-size: 21px;
 					
 					
 					}""",
