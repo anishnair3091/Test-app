@@ -30,106 +30,6 @@ if st.sidebar.button('Home', icon= '🏡'):
 
 
 
-history_data= pd.read_csv('DATA/History.csv')
-
-
-performance_data= history_data[['AMC_Company', 'Ticket_ref', 'Response_time_difference']].groupby(['AMC_Company']).count().reset_index()
-
-performances= performance_data.Response_time_difference/performance_data.Ticket_ref
-
-dfs= performances.to_frame()
-
-perform_data= pd.concat([performance_data, dfs], axis=1)
-
-perform_data.columns= ['AMC_Company', 'Ticket_ref', 'Response_time_difference', 'Performance']
-
-AMC_data= pd.read_csv("DATA/AMC.csv")
-
-times= []
-data= history_data[history_data['Status'] == 'Open']
-for time in pd.to_datetime(data['Response']):
-    current_time = datetime.datetime.now()
-    time_diff = time- current_time
-    times.append(time_diff.total_seconds())
-
-data['Time_remaining_secs']= times
-
-times1= []
-data1= history_data[history_data['Status'] == 'Close']
-for time, his in zip(pd.to_datetime(data1['Response']), pd.to_datetime(data1['Actual_Completion_time'])) :
-    
-    time_diff = time- his
-    times1.append(time_diff.total_seconds())
-
-data1['Time_remaining_secs']= times1
-
-history_data = pd.concat([data1, data], axis= 0)
-
-#To distinguish tickets based on SLA status
-
-SLAs = []
-for secs in history_data['Time_remaining_secs']:
-	if secs > 0:
-		SLA= 'SLA met'
-		SLAs.append(SLA)
-	elif secs <= 0:
-		SLA= 'SLA not met'
-		SLAs.append(SLA)
-
-history_data['SLA'] = SLAs
-
-dummies = pd.get_dummies(history_data['SLA'])
-
-encoder= LabelEncoder()
-encoder.fit(dummies['SLA met'])
-
-history_data['SLA met'] = encoder.transform(dummies['SLA met'])
-
-encoder= LabelEncoder()
-encoder.fit(dummies['SLA not met'])
-history_data['SLA not met']= encoder.transform(dummies['SLA not met'])
-
-#To extract the integer part from the ticket
-
-ticks= []
-for ref in history_data['Ticket_ref']:
-    for number in ref.split("/"):
-        tick= number
-    ticks.append(tick)
-
-history_data['Ticket_num']= ticks
-
-# To extract the week number
-week_num= []
-for date in pd.to_datetime(history_data['Date']):
-    week = date.strftime("%W")
-    week_num.append(week)
-
-history_data['Week']= week_num
-
-
-
-# To Open & Close columns
-
-dummy_variable = pd.get_dummies(history_data.Status)
-
-encoder= LabelEncoder()
-encoder1= LabelEncoder()
-encoder.fit(dummy_variable.Close)
-encoder1.fit(dummy_variable.Open)
-dummy_variable['Close']= encoder.transform(dummy_variable.Close)
-dummy_variable['Open']= encoder.transform(dummy_variable.Open)
-
-history_data.Open= dummy_variable.Open
-history_data.Close= dummy_variable.Close
-
-Datetime= []
-for date, time in zip(history_data['Date'], history_data['Time']):
-    my_datetime_str= date + ' ' + time
-    my_datetime= pd.to_datetime(my_datetime_str)
-    Datetime.append(my_datetime)
-
-history_data['Datetime']= Datetime
 
 
 user_data= pd.read_csv("DATA/user_data.csv")
@@ -182,105 +82,201 @@ def user_type():
 	    usertype= user
 	    return usertype
 
-
-def load_data(nrows):
-	data = pd.read_csv("DATA/History.csv")
-	if option11 != None:
-		data1 = data[data['AMC_Company'] == option11]
-		return data1 
-	elif option11 == None:
-		data1 = data 
-		return data1
-
-
-data = load_data(1000)
-
-
-def data_table(nrows):
-	data_table= data[['AMC_Company', 'Close', 'Open']].groupby(['AMC_Company']).sum().reset_index()
-	return data_table
-
-
-data_table= data_table(100)
-
-def trouble_data(nrows):
-	trouble_data= data['Troubles_Name'].value_counts().to_frame().reset_index()
-	trouble_data = trouble_data.head(6)
-	return trouble_data
-	
-
-def project_trouble(nrows):
-	project_trouble= data['Project'].value_counts().to_frame().reset_index()
-	project_trouble= project_trouble.head(6)
-	return project_trouble
-	
-
-trouble= trouble_data(13)
-project= project_trouble(13)
-
-
-def handle_action(action):
-	st.page_link("pages/BMTS-view tickets.py")
-
-
-
-
-def area_chart():
-	hist_sum_person = data[['Date', 'AMC_Company', 'Status']].groupby(['Date', 'AMC_Company']).count().reset_index()
-	fig= plt.figure(figsize=(4, 3))
-	fig = px.area(hist_sum_person, x = 'Date', y = 'Status', color= 'AMC_Company', line_group= 'AMC_Company')
-	return fig 	
-
-def view_data(k):
-	view_data= data.iloc[[k]]
-	return view_data
-	
-
-def top_performer():
-	data = perform_data[perform_data['Performance'] == perform_data['Performance'].max()]
-	for person in data.AMC_Company:
-		performer= person 
-		return performer
-
-def load_css(filepath):
-	with open(filepath) as f:
-		st.html(f'''<style>{f.read()}</style>''')
-
-
-		
-# Facetted Subplots
-
-history_data_total = data[['AMC_Company', 'Status', 'Ticket_ref', 'Weekday', 'Week']].groupby(['AMC_Company', 'Status', 'Week','Weekday']).count().reset_index()
-
-history_data_total_week = history_data_total[history_data_total['Week'] == history_data_total['Week'].max()]
-
-total_tickets= data[['Day', 'Ticket_ref']].groupby(['Day']).count().reset_index()
-
-open_tickets= data[['Day', 'Open']].groupby(['Day']).sum().reset_index()
-
-close_tickets= data[['Day', 'Close']].groupby(['Day']).sum().reset_index()
-
-progress_data= data[data['Status'] == 'In progress']
-
-progress_tickets = progress_data[['Day', 'Status']].groupby(['Day']).count().reset_index()	
-
-#To display SLA status chart and table
-
-SLA_summary= load_data(100)[['AMC_Company', 'Ticket_ref', "Status", 'SLA', 'Day', 'Open', 'Close', 'SLA met', 'SLA not met']].groupby(['AMC_Company', 'Ticket_ref', 'Status', 'SLA']).sum().reset_index()
-
-SLA_table= SLA_summary[['AMC_Company', 'Open', 'Close', 'SLA met', 'SLA not met']].groupby(['AMC_Company']).sum().reset_index()
-
-SLA_chart= SLA_summary[[ 'Open', 'Close', 'Day', 'SLA met', 'SLA not met']].groupby(['Day']).sum().reset_index()
-
-data= load_data(100)
-
-
-
-
 if st.session_state['authentication_status']:
 	if user_type() == 'customer' or user_type() == 'Admin':
 
+		history_data= pd.read_csv('DATA/History.csv')
 
+
+		performance_data= history_data[['AMC_Company', 'Ticket_ref', 'Response_time_difference']].groupby(['AMC_Company']).count().reset_index()
+		
+		performances= performance_data.Response_time_difference/performance_data.Ticket_ref
+		
+		dfs= performances.to_frame()
+		
+		perform_data= pd.concat([performance_data, dfs], axis=1)
+		
+		perform_data.columns= ['AMC_Company', 'Ticket_ref', 'Response_time_difference', 'Performance']
+		
+		AMC_data= pd.read_csv("DATA/AMC.csv")
+		
+		times= []
+		data= history_data[history_data['Status'] == 'Open']
+		for time in pd.to_datetime(data['Response']):
+		    current_time = datetime.datetime.now()
+		    time_diff = time- current_time
+		    times.append(time_diff.total_seconds())
+		
+		data['Time_remaining_secs']= times
+		
+		times1= []
+		data1= history_data[history_data['Status'] == 'Close']
+		for time, his in zip(pd.to_datetime(data1['Response']), pd.to_datetime(data1['Actual_Completion_time'])) :
+		    
+		    time_diff = time- his
+		    times1.append(time_diff.total_seconds())
+		
+		data1['Time_remaining_secs']= times1
+		
+		history_data = pd.concat([data1, data], axis= 0)
+		
+		#To distinguish tickets based on SLA status
+		
+		SLAs = []
+		for secs in history_data['Time_remaining_secs']:
+			if secs > 0:
+				SLA= 'SLA met'
+				SLAs.append(SLA)
+			elif secs <= 0:
+				SLA= 'SLA not met'
+				SLAs.append(SLA)
+		
+		history_data['SLA'] = SLAs
+		
+		dummies = pd.get_dummies(history_data['SLA'])
+		
+		encoder= LabelEncoder()
+		encoder.fit(dummies['SLA met'])
+		
+		history_data['SLA met'] = encoder.transform(dummies['SLA met'])
+		
+		encoder= LabelEncoder()
+		encoder.fit(dummies['SLA not met'])
+		history_data['SLA not met']= encoder.transform(dummies['SLA not met'])
+		
+		#To extract the integer part from the ticket
+		
+		ticks= []
+		for ref in history_data['Ticket_ref']:
+		    for number in ref.split("/"):
+		        tick= number
+		    ticks.append(tick)
+		
+		history_data['Ticket_num']= ticks
+		
+		# To extract the week number
+		week_num= []
+		for date in pd.to_datetime(history_data['Date']):
+		    week = date.strftime("%W")
+		    week_num.append(week)
+		
+		history_data['Week']= week_num
+		
+		
+		
+		# To Open & Close columns
+		
+		dummy_variable = pd.get_dummies(history_data.Status)
+		
+		encoder= LabelEncoder()
+		encoder1= LabelEncoder()
+		encoder.fit(dummy_variable.Close)
+		encoder1.fit(dummy_variable.Open)
+		dummy_variable['Close']= encoder.transform(dummy_variable.Close)
+		dummy_variable['Open']= encoder.transform(dummy_variable.Open)
+		
+		history_data.Open= dummy_variable.Open
+		history_data.Close= dummy_variable.Close
+		
+		Datetime= []
+		for date, time in zip(history_data['Date'], history_data['Time']):
+		    my_datetime_str= date + ' ' + time
+		    my_datetime= pd.to_datetime(my_datetime_str)
+		    Datetime.append(my_datetime)
+		
+		history_data['Datetime']= Datetime
+
+		def load_data(nrows):
+			data = pd.read_csv("DATA/History.csv")
+			if option11 != None:
+				data1 = data[data['AMC_Company'] == option11]
+				return data1 
+			elif option11 == None:
+				data1 = data 
+				return data1
+
+
+		data = load_data(1000)
+		
+		
+		def data_table(nrows):
+			data_table= data[['AMC_Company', 'Close', 'Open']].groupby(['AMC_Company']).sum().reset_index()
+			return data_table
+		
+		
+		data_table= data_table(100)
+		
+		def trouble_data(nrows):
+			trouble_data= data['Troubles_Name'].value_counts().to_frame().reset_index()
+			trouble_data = trouble_data.head(6)
+			return trouble_data
+			
+		
+		def project_trouble(nrows):
+			project_trouble= data['Project'].value_counts().to_frame().reset_index()
+			project_trouble= project_trouble.head(6)
+			return project_trouble
+			
+		
+		trouble= trouble_data(13)
+		project= project_trouble(13)
+		
+		
+		def handle_action(action):
+			st.page_link("pages/BMTS-view tickets.py")
+		
+		
+		
+		
+		def area_chart():
+			hist_sum_person = data[['Date', 'AMC_Company', 'Status']].groupby(['Date', 'AMC_Company']).count().reset_index()
+			fig= plt.figure(figsize=(4, 3))
+			fig = px.area(hist_sum_person, x = 'Date', y = 'Status', color= 'AMC_Company', line_group= 'AMC_Company')
+			return fig 	
+		
+		def view_data(k):
+			view_data= data.iloc[[k]]
+			return view_data
+			
+		
+		def top_performer():
+			data = perform_data[perform_data['Performance'] == perform_data['Performance'].max()]
+			for person in data.AMC_Company:
+				performer= person 
+				return performer
+		
+		def load_css(filepath):
+			with open(filepath) as f:
+				st.html(f'''<style>{f.read()}</style>''')
+		
+		
+				
+		# Facetted Subplots
+		
+		history_data_total = data[['AMC_Company', 'Status', 'Ticket_ref', 'Weekday', 'Week']].groupby(['AMC_Company', 'Status', 'Week','Weekday']).count().reset_index()
+		
+		history_data_total_week = history_data_total[history_data_total['Week'] == history_data_total['Week'].max()]
+		
+		total_tickets= data[['Day', 'Ticket_ref']].groupby(['Day']).count().reset_index()
+		
+		open_tickets= data[['Day', 'Open']].groupby(['Day']).sum().reset_index()
+		
+		close_tickets= data[['Day', 'Close']].groupby(['Day']).sum().reset_index()
+		
+		progress_data= data[data['Status'] == 'In progress']
+		
+		progress_tickets = progress_data[['Day', 'Status']].groupby(['Day']).count().reset_index()	
+		
+		#To display SLA status chart and table
+		
+		SLA_summary= load_data(100)[['AMC_Company', 'Ticket_ref', "Status", 'SLA', 'Day', 'Open', 'Close', 'SLA met', 'SLA not met']].groupby(['AMC_Company', 'Ticket_ref', 'Status', 'SLA']).sum().reset_index()
+		
+		SLA_table= SLA_summary[['AMC_Company', 'Open', 'Close', 'SLA met', 'SLA not met']].groupby(['AMC_Company']).sum().reset_index()
+		
+		SLA_chart= SLA_summary[[ 'Open', 'Close', 'Day', 'SLA met', 'SLA not met']].groupby(['Day']).sum().reset_index()
+		
+		data= load_data(100)
+		
 		def userlogin():
 			for string in name:
 				return string
