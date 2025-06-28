@@ -100,7 +100,7 @@ if usertype() == 'customer' or usertype() == 'Admin':
 	
 	col1, col2= st.columns([.95, .05])
 
-	col1.html("<h3 style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>")
+	col1.html("<h3 data-testid="stHeader" style='text-align: left; color: #888E8E; text-shadow: 5px 5px 5px; '>P2S SOLUTIONS</h3>")
 	with stylable_container(
 		key= 'buttoncl8',
 		css_styles=[
