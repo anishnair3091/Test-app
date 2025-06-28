@@ -69,13 +69,7 @@ if authentication_status == True:
         st.switch_page("pages/admin_page.py")
     else:
         st.error("Invalid username/password")
-        
-    
-
-
-if st.sidebar.button('Logout'):
-    st.logout()
-st.switch_page('pages/Sign-in.py')
+   
     
 if st.sidebar.button('Main'):
     st.switch_page('Main_page-copy.py')
