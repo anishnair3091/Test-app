@@ -172,7 +172,7 @@ for user, ids, types in zip(user_data.Username, user_data.User_id, user_data.Use
 
 # Defining name
 
-if authentication_status() == True:
+if authentication_status == True:
     name= st.session_state["name"]
     st.sidebar.write(f'Welcome **{name}**')
 
