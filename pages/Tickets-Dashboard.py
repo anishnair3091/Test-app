@@ -179,8 +179,8 @@ if authentication_status() == True:
 def user_type():
     data = user_data[user_data['Username'] == name]
     for user in data.User_type:
-        usertype= user
-	return usertype
+	    usertype= user
+	    return usertype
 
 
 def load_data(nrows):
@@ -240,7 +240,7 @@ def top_performer():
 	data = perform_data[perform_data['Performance'] == perform_data['Performance'].max()]
 	for person in data.AMC_Company:
 		performer= person 
-	return performer
+		return performer
 
 def load_css(filepath):
 	with open(filepath) as f:
