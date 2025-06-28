@@ -113,7 +113,7 @@ if st.session_state['authentication_status']:
 		  </style>
 		</head>
 		<body>
-		  <h3 style= "text-align: left; color: #888E8E; text-shadow: 5px 5px 5px;">P2S-SOLUTIONS {userlogin()}</h3>
+		  <h3 style= "text-align: left; color: #888E8E; text-shadow: 5px 5px 5px;">P2S_SOLUTIONS {userlogin()}</h3>
 		</body>
 		</html>""")
 		
