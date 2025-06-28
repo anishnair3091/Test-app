@@ -111,9 +111,13 @@ if usertype() == 'customer' or usertype() == 'Admin':
    p{
    font-size:15px;
    text-align:center;
-   text-shadow: 5px 5px 5px;
-   color: 
-   }
+   color: #888E8E;
+   }""",
+			"""
+   button{
+   cursor: pointer;
+   border-radius:50px;
+   }""",
 		]
 	):
 		col8.button(f"{string}")
