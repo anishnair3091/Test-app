@@ -216,6 +216,7 @@ if usertype() == 'customer' or usertype() == 'Admin':
 
 
 if st.sidebar.button('Logout'):
-	st.logout()
+	authenticator.logout(location='unrendered')
+	st.experimental_rerun()
 
 
