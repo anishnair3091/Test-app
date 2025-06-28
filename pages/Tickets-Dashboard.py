@@ -90,7 +90,7 @@ if st.session_state['authentication_status']:
 				return string
 
 
-		st.markdown(f"""
+		st.html("""
 		<html>
 		  <head>
 		  <style>
@@ -114,7 +114,7 @@ if st.session_state['authentication_status']:
 		<body>
 		  <h3 style= "text-align: left; color: black; text-shadow: 5px 5px 5px;">P2S_SOLUTIONS {userlogin()}</h3>
 		</body>
-		</html>""", unsafe_allow_html= True)
+		</html>""")
 		
 
 		
