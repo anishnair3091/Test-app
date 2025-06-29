@@ -90,7 +90,7 @@ if st.session_state['authentication_status']:
 				return string
 
 
-		st.html(f'''
+		st.html('''
 		<html>
 		  <head>
 		  <style>
