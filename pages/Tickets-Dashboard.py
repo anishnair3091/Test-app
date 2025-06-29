@@ -95,7 +95,7 @@ if st.session_state['authentication_status']:
 			background-color: lightgray;
 		}}
 		</style>
-  		<h4 style= "text-align: left; font-size: 15px; color: #888E8E; text-shadow: 3px 3px 3px;">P2S SOLUTIONS</h4>
+  		<h4 style= "text-align: left; font-size: 15px; text-shadow: 3px 3px 3px;">P2S SOLUTIONS</h4>
 		"""
 		
 		
