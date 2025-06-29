@@ -29,37 +29,35 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 main_page= st.Page("Main_page-copy.py", title= 'Main page', icon= '🏢', )
 
 st.html('''
-		<html>
-		  <head>
-		  <style>
-		    h3{
-		      word-spacing: 1100px;
-		      text-align: left;
-		      color: #888E8E;
-		      text-shadow: 3px 3px 3px;
-		    }
-		    :root {
-		  --header-height: 50px;
-		  --header-height-padded: 59px;
-		}
-		
-		#stHeader {
-		    background-repeat: no-repeat;
-		    background-size: contain;
-		    background-orgin: content-box;
-		    background-color: grey;
-		    padding-top: var(--header-height);
-		}
-		  </style>
-		</head>
-		<body>
-		  <h3 data-testid = "stHeader">P2S_SOLUTIONS {userlogin()}</h3>
-		</body>
-		</html>''')
+	<html>
+	  <head>
+	  <style>
+	    h3{
+	      word-spacing: 1100px;
+	      text-align: left;
+	      color: #888E8E;
+	      text-shadow: 3px 3px 3px;
+	    }
+	    :root {
+	  --header-height: 50px;
+	  --header-height-padded: 59px;
+	}
+	
+	#stHeader {
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-orgin: content-box;
+	    background-color: grey;
+	    padding-top: var(--header-height);
+	}
+	  </style>
+	</head>
+	<body>
+	  <h3 data-testid = "stHeader">P2S_SOLUTIONS {userlogin()}</h3>
+	</body>
+	</html>''')
 
 col1, col2, col3, col4, col5, col6, col7, col8= st.columns(8)
-
-col1.html("<h3 style= 'text-align: center; color:#888E8E; text-shadow: 5px 5px 5px;'>P2S SOLUTIONS<h3/>")
 
 with col7:
 	st.page_link('https://www.bmts.ae', label= 'WEBSITE', icon= "🌍")
