@@ -90,26 +90,7 @@ if st.session_state['authentication_status']:
 				return string
 
 
-		st.markdown(f'''
-			<html>
-			  <head>
-			  <style>
-			    h3{
-			      word-spacing:1200px;
-			      text-align: left;
-			      color: #888E8E;
-			      text-shadow: 3px 3px 3px;
-			    }
-			#stHeader {
-			    background-color: none;
-			    color: #888E8E;
-			}
-			  </style>
-			</head>
-			<body>
-			  <h3 data-testid = "stHeader">P2S_SOLUTIONS {userlogin()}</h3
-			</body>
-			</html>''', unsafe_allow_html=True)
+		st.markdown(f'''<h3 data-testid = "stHeader" style= "word-spacing: 1200px; text-align: left; color: #888E8E; text-shadow: 3px 3px 3px;">P2S_SOLUTIONS {userlogin()}</h3>''', unsafe_allow_html=True)
 		
 
 		
