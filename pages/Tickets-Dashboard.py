@@ -104,7 +104,7 @@ if st.session_state['authentication_status']:
 			  --header-height-padded: 59px;
 			}
 			
-			#stAppHeader {
+			#stSidebarHeader {
 			    background-repeat: no-repeat;
 			    background-size: contain;
 			    background-orgin: content-box;
@@ -114,7 +114,7 @@ if st.session_state['authentication_status']:
 			  </style>
 			</head>
 			<body>
-			  <h3 data-testid = "stAppHeader">P2S_SOLUTIONS</h3>
+			  <h3 data-testid = "stSidebarHeader">P2S_SOLUTIONS</h3>
 			</body>
 			</html>''')
 		
