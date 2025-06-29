@@ -90,33 +90,26 @@ if st.session_state['authentication_status']:
 				return string
 
 
-		st.html('''
+		st.markdown(f'''
 			<html>
 			  <head>
 			  <style>
 			    h3{
+			      word-spacing:1200px;
 			      text-align: left;
 			      color: #888E8E;
 			      text-shadow: 3px 3px 3px;
 			    }
-			    :root {
-			  --header-height: 50px;
-			  --header-height-padded: 59px;
-			}
-			
-			#stSidebarHeader {
-			    background-repeat: no-repeat;
-			    background-size: contain;
-			    background-orgin: content-box;
-			    background-color: grey;
-			    padding-top: var(--header-height);
+			#stHeader {
+			    background-color: none;
+			    color: #888E8E;
 			}
 			  </style>
 			</head>
 			<body>
-			  f"<h3 data-testid = "stSidebarHeader">P2S_SOLUTIONS {userlogin()}</h3>"
+			  <h3 data-testid = "stHeader">P2S_SOLUTIONS {userlogin()}</h3
 			</body>
-			</html>''')
+			</html>''', unsafe_allow_html=True)
 		
 
 		
