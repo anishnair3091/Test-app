@@ -14,6 +14,10 @@ st.set_page_config(page_title= 'Sign-in', layout='centered', initial_sidebar_sta
 user_data= pd.read_csv("DATA/user_data.csv")
 
 
+
+
+st.sidebar.html('''<p data-testid = "stHeader" style="text-align: left; word-spacing: 1100px; font-family: arial; font-weight: bold; font-size: 16px; text-shadow: 1px 1px 1px; color : #626769;">P2S_SOLUTIONS</p>''')
+
 def user_type():
     data = user_data[user_data['Username'] == name]
     for user in data.User_type:
