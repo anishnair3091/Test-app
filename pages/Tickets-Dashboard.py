@@ -95,7 +95,6 @@ if st.session_state['authentication_status']:
 			  <head>
 			  <style>
 			    h3{
-			      word-spacing: 1100px;
 			      text-align: left;
 			      color: #888E8E;
 			      text-shadow: 3px 3px 3px;
