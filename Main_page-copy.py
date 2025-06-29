@@ -24,7 +24,7 @@ page_bg_img= f"""
 }}
 </style>
 <div class="st-emotion-cache-1yiq2ps">
-<h1>My App<h1>
+<h1>My App</h1>
 </div>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
