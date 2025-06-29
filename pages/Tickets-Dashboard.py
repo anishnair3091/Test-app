@@ -114,7 +114,7 @@ if st.session_state['authentication_status']:
 			  </style>
 			</head>
 			<body>
-			  <h3 data-testid = "stSidebarHeader">P2S_SOLUTIONS</h3>
+			  f"<h3 data-testid = "stSidebarHeader">P2S_SOLUTIONS {userlogin()}</h3>"
 			</body>
 			</html>''')
 		
