@@ -89,10 +89,15 @@ if st.session_state['authentication_status']:
 			for string in name:
 				return string
 
-
-		st.markdown(f'''<header class = "stAppHeader st-emotion-cache-gkoddq e4x2yc31" style= "font-size: 15px; word-spacing: 1200px; text-align: left; color: #888E8E; text-shadow: 3px 3px 3px;">P2S_SOLUTIONS {userlogin()}</header>''', unsafe_allow_html=True)
+		page_bg_header= f"""
+		<style>
+		.st-emotion-cache-gkoddq{{
+			background-color: lightgray;
+		}}
+		</style>
+  		<h4 style= "text-align: left; font-size: 15px; color: #888E8E; text-shadow: 3px 3px 3px;">P2S SOLUTIONS</h4>
+		"""
 		
-
 		
 				
 		
