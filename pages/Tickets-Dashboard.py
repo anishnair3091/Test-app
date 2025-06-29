@@ -91,30 +91,33 @@ if st.session_state['authentication_status']:
 
 
 		st.html('''
-		<html>
-		  <head>
-		  <style>
-		    h3{
-		      word-spacing: 1200px;
-		    }
-		    :root {
-		  --header-height: 50px;
-		  --header-height-padded: 59px;
-		}
-		
-		[data-testid="stHeader"] {
-		    background-repeat: no-repeat;
-		    background-size: contain;
-		    background-orgin: content-box;
-		    background-color: grey;
-		    padding-top: var(--header-height);
-		}
-		  </style>
-		</head>
-		<body>
-		  <h3 style= "text-align: left; color: black; text-shadow: 5px 5px 5px;">P2S_SOLUTIONS {userlogin()}</h3>
-		</body>
-		</html>''')
+			<html>
+			  <head>
+			  <style>
+			    h3{
+			      word-spacing: 1100px;
+			      text-align: left;
+			      color: #888E8E;
+			      text-shadow: 3px 3px 3px;
+			    }
+			    :root {
+			  --header-height: 50px;
+			  --header-height-padded: 59px;
+			}
+			
+			#stHeader {
+			    background-repeat: no-repeat;
+			    background-size: contain;
+			    background-orgin: content-box;
+			    background-color: grey;
+			    padding-top: var(--header-height);
+			}
+			  </style>
+			</head>
+			<body>
+			  <h3 data-testid = "stHeader">P2S_SOLUTIONS</h3>
+			</body>
+			</html>''')
 		
 
 		
