@@ -80,8 +80,8 @@ with col12:
 		display: inline-block;
 		transition-duration: 0.4s;
 		cursor: pointer;
-		position: center;
-		float: center;
+		position: absolute;
+		
 		text-align:center;
 		width: 180px;
 		height: 90px;
@@ -104,6 +104,7 @@ with col12:
 		margin-right:30px;
 		margin-left:0px;
 		font-size:30px;
+		position: absolute;
 		
 		}""",
 		"""
