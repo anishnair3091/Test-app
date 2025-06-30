@@ -14,7 +14,17 @@ st.set_page_config(page_title= 'Sign-in', layout='centered', initial_sidebar_sta
 user_data= pd.read_csv("DATA/user_data.csv")
 
 
+hide_st_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
 
+
+
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 st.sidebar.html('''<p data-testid = "stHeader" style="text-align: left; word-spacing: 1100px; font-family: arial; font-weight: bold; font-size: 16px; text-shadow: 1px 1px 1px; color : #626769;">P2S_SOLUTIONS</p>''')
 
