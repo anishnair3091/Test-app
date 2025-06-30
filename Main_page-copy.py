@@ -1,4 +1,4 @@
-import pandas as pd
+erimport pandas as pd
 import streamlit as st 
 from PIL import Image
 import streamlit as st
@@ -11,7 +11,7 @@ from streamlit_extras.stylable_container import stylable_container
 
 
 #Main Page config setup
-st.set_page_config(layout='wide', initial_sidebar_state='collapsed')
+st.set_page_config(layout='centered', initial_sidebar_state='collapsed')
 
 page_bg_img= f"""
 <style>
