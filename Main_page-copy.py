@@ -14,9 +14,11 @@ from streamlit_extras.stylable_container import stylable_container
 st.set_page_config(layout='wide', initial_sidebar_state='collapsed')
 
 hide_st_style = """
+<style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
+</style>
 """
 
 
