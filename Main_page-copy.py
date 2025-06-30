@@ -13,6 +13,15 @@ from streamlit_extras.stylable_container import stylable_container
 #Main Page config setup
 st.set_page_config(layout='wide', initial_sidebar_state='collapsed')
 
+hide_st_style = “”"
+
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+“”"
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 page_bg_img= f"""
 <style>
 .st-emotion-cache-1yiq2ps{{
