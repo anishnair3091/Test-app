@@ -80,7 +80,7 @@ with col12:
 		display: inline-block;
 		transition-duration: 0.4s;
 		cursor: pointer;
-		position: absolute;
+		position: relative;
 		
 		text-align:center;
 		width: 180px;
@@ -104,7 +104,7 @@ with col12:
 		margin-right:30px;
 		margin-left:0px;
 		font-size:30px;
-		position: absolute;
+		position: relative;
 		
 		}""",
 		"""
@@ -156,8 +156,8 @@ with col14:
 		display: inline-block;
 		transition-duration: 0.4s;
 		cursor: pointer;
-		position: left;
-		float: left;
+		position: relative;
+		
 		text-align:center;
 		width: 180px;
 		height: 90px;
@@ -180,6 +180,7 @@ with col14:
 		margin-right:30px;
 		margin-left:0px;
 		font-size:30px;
+	        position: relative;
 		
 		}""",
 		"""
