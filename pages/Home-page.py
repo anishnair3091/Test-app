@@ -14,7 +14,7 @@ from streamlit_extras.stylable_container import stylable_container
 
 
 #Main Page config setup
-st.set_page_config(page_title= "Customer Home Page", layout='centered', initial_sidebar_state='collapsed')
+st.set_page_config(page_title= "Customer Home Page", layout='wide', initial_sidebar_state='collapsed')
 
 main_page= st.Page("Main_page-copy.py", title= 'Main page', icon= '🏢')
 
