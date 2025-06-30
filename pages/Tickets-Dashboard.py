@@ -102,7 +102,7 @@ if st.session_state['authentication_status']:
 		page_bg_header= f"""
 		<h4 class="stAppHeader st-emotion-cache-gkoddq e4x2yc31" data-testid="stHeader" style="text-shadow: 3px 3px 3px; font-style: ariel; font-size:15px;">P2S Solutions</h4>
 		"""
-		st.html(F'''<header style="text-shadow: 3px 3px 3px; font-style: ariel; font-size:15px; margin-bottom:-10px; margin-bottom:30px; word-spacing: 1150px;">P2S_Solutions <button type='button' onclick="alert('Hello World')" style= "border-color:none; border: 1.5px solid transparent; background-color: transparent;">Support</button></header>''')
+		st.html(f'''<h4 style="text-shadow: 3px 3px 3px; font-style: ariel; font-size:15px; margin-bottom:-10px; margin-bottom:30px; word-spacing: 1150px;">P2S_Solutions <button type='button' onclick="alert('Hello World')" style= "border-color:none; border: 1.5px solid transparent; background-color: transparent;">Support</button></h4>''')
 
 	
 		
