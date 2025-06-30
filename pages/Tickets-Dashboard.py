@@ -20,12 +20,10 @@ from datetime import date
 
 #Page config setup
 
-st.set_page_config('Tickets_Dashboard', layout='wide', initial_sidebar_state= 'auto')
+st.set_page_config('Tickets_Dashboard', layout='wide', initial_sidebar_state= 'collapsed')
 
 Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
 
-if st.sidebar.button('Home', icon= '🏡'):
-	st.switch_page(Home)
 
 
 
@@ -74,7 +72,7 @@ name, authentication_status, username= authenticator.login('main', 'Login')
 
 if authentication_status == True:
     name= st.session_state["name"]
-    st.sidebar.write(f'Welcome **{name}**')
+    
 
 def user_type():
     data = user_data[user_data['Username'] == name]
@@ -86,24 +84,17 @@ if st.session_state['authentication_status']:
 	if user_type() == 'customer' or user_type() == 'Admin':
 
 		def userlogin():
+			strings=[]
 			for string in name:
-				return string
+				strings.append(string)
+			return strings[0]+ strings[1]+strings[2]
 
 		page_bg_header= f"""
-		<style>
-		.st-emotion-cache-gkoddq{{
-			background-color: lightgray;
-		}}
-		</style>
-  		<h4>P2S SOLUTIONS</h4>
+		<h4 class="stAppHeader st-emotion-cache-gkoddq e4x2yc31" data-testid="stHeader" style="text-shadow: 3px 3px 3px; font-style: ariel; font-size:15px;">P2S Solutions</h4>
 		"""
-		
-		
-				
-		
-		st.markdown('''<h3 style= "text-align:left; color:#8C98AF; ">WELCOME TO TICKET DASHBOARD</h3>''', unsafe_allow_html=True)
-		
-				
+		st.html(F'''<header style="text-shadow: 3px 3px 3px; font-style: ariel; font-size:15px; margin-bottom:30px; word-spacing: 1150px;">P2S_Solutions <button type='button' onclick="alert('Hello World')" style= "border-color:none; border: 1.5px solid transparent; background-color: transparent;">Support</button></header>''')
+
+	
 		
 		history_data= pd.read_csv('DATA/History.csv')
 
@@ -206,9 +197,543 @@ if st.session_state['authentication_status']:
 		
 		history_data['Datetime']= Datetime
 
-		option11= st.sidebar.pills('Select the Supplier', options= history_data['AMC_Company'].unique(), selection_mode='single')
+		
+		st.markdown('''<h4 style= "text-align:left; color:#8C98AF; margin-bottom: 30px; ">TICKETS DASHBOARD</h4>''', unsafe_allow_html=True)
 
 
+		with stylable_container(
+    
+				key= 'tab',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				""" 
+				[data-testid= 'stVerticalBlockBorderWrapper'] {
+
+				background-color: #8C98AF;
+
+				height: 40px;
+			
+				cursor: pointer;
+				
+				text-align: center;
+				
+				border-radius: 10px;
+
+				margin-bottom: 20px;
+
+
+
+				}""",
+				
+				
+				]
+
+				):
+
+
+			col1, col2, col3, col4, col5, col6, col7, col9, col10 = st.columns([.1, .1, .1, .1, .1, .1, .1, .2, .1], gap='small', border=False)
+
+			with col1:
+
+				with stylable_container(
+
+				key= 'tab1',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid none;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 130px;
+				border-radius: 5px;
+				padding-left:10px;
+				padding-right:10px;
+				margin-right:10px;
+				margin-left:5px;
+				font-size:30px;
+				float: left;
+				position: static;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				
+				border: 0.5px double none;
+				border-color: black;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
+
+				):
+
+					if st.button("Home", type='tertiary'):
+						st.switch_page("Main_page-copy.py")
+
+
+			with col2:
+
+			
+				with stylable_container(
+
+				key= 'tab2',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid none;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 130px;
+				border-radius: 5px;
+				padding-left:10px;
+				padding-right:10px;
+				margin-right:10px;
+				margin-left:5px;
+				font-size:30px;
+				float: left;
+				position: static;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				
+				border: 0.5px double none;
+				border-color: black;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
+
+				):
+
+					if st.button("Tickets", type='tertiary'):
+						st.switch_page("pages/Tickets-Dashboard.py")
+
+			with col3:
+
+				with stylable_container(
+
+				key= 'tab3',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid none;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 130px;
+				border-radius: 5px;
+				padding-left:10px;
+				padding-right:10px;
+				margin-right:10px;
+				margin-left:5px;
+				font-size:30px;
+				float: left;
+				position: static;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				
+				border: 0.5px double none;
+				border-color: black;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
+
+				):
+
+					if st.button("Enquiries", type= 'tertiary'):
+						st.switch_page("pages/Enquiries-Dashboard.py")
+
+			with col4:
+
+				with stylable_container(
+
+				key= 'tab4',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid none;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 130px;
+				border-radius: 5px;
+				padding-left:10px;
+				padding-right:10px;
+				margin-right:10px;
+				margin-left:5px;
+				font-size:30px;
+				float: left;
+				position: static;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				
+				border: 0.5px double none;
+				border-color: black;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
+
+				):
+
+
+
+					st.button("Create Tickets", type= 'tertiary')
+
+			with col5:
+
+				with stylable_container(
+
+				key= 'tab5',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid none;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 130px;
+				border-radius: 5px;
+				padding-left:10px;
+				padding-right:10px;
+				margin-right:10px;
+				margin-left:5px;
+				font-size:30px;
+				float: left;
+				position: static;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				
+				border: 0.5px double none;
+				border-color: black;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
+
+				):
+
+
+
+					st.button("Raise Enquiries", type= 'tertiary')
+
+			with col6:
+
+				with stylable_container(
+
+				key= 'tab6',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid none;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 130px;
+				border-radius: 5px;
+				padding-left:10px;
+				padding-right:10px;
+				margin-right:10px;
+				margin-left:5px;
+				font-size:30px;
+				float: left;
+				position: static;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				
+				border: 0.5px double none;
+				border-color: black;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
+
+				):
+
+
+
+					st.button("Knowledge base", type= 'tertiary')
+
+			with col7:
+
+				with stylable_container(
+
+				key= 'tab7',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid none;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 130px;
+				border-radius: 5px;
+				padding-left:10px;
+				padding-right:10px;
+				margin-right:10px;
+				margin-left:5px;
+				font-size:30px;
+				float: left;
+				position: static;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				
+				border: 0.5px double none;
+				border-color: black;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
+
+				):
+
+
+					st.button("Chat", type='tertiary')
+
+			
+
+			with col9:
+
+				with stylable_container(
+
+				key= 'tab9',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px solid none;
+				border-color:#BACBEC;
+				text-align: center;
+				width: 250px;
+				border-radius: 5px;
+				padding-left:10px;
+				padding-right:10px;
+				margin-right:10px;
+				margin-left:5px;
+				font-size:30px;
+				float: left;
+				position: static;
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				
+				border: 0.5px double none;
+				border-color: black;
+				shadow: grey;
+				text-transform: blue;
+
+				
+				
+				}""",
+				
+				]
+
+				):
+
+					option11= st.selectbox("Company", options=data['AMC_Company'].unique(), index= None, placeholder= 'Search with Company Name', label_visibility='collapsed', width=400)
+
+			with col10:
+
+				with stylable_container(
+
+				key= 'tab10',
+				css_styles=[
+				"""
+				p {
+				font-size: 16px;
+				font-color: #BACBEC;
+				margin-bottom:15px;
+				margin-top:15px;
+
+
+				}""",
+
+				
+				"""
+				button {
+				background-color: transparent;
+				color: black;
+				text-color: #BACBEC;
+				border: 1.5px groove white;
+				border-color:none;
+				text-align: center;
+				width: 80px;
+				border-radius: 100px;
+				margin-right:10px;
+				margin-left:5px;
+				height:30px;
+				font-size:30px;
+				float: right;
+				position:relative;
+				
+				
+				}""",
+				"""
+				button:hover {
+				background-color: none;
+				color: ghostwhite;
+				font-weight: bolder;
+				border: 0.5px double none;
+				border-color: transparent;
+				shadow: grey;
+				text-transform: blue;
+				
+				
+				}""",
+				
+				]
+
+				):
+
+
+
+					with st.popover(f"{userlogin()}"):
+
+						st.html(f'''<p style="font-size: 20px;">User:</p>''')
+						st.html(f'''<p>{name}</p>''')
+						if st.button("Logout"):
+						
+							authenticator.logout("LOGOUT", "sidebar")
+
+		
 		def load_data(nrows):
 			data = pd.read_csv("DATA/History.csv")
 			if option11 != None:
@@ -299,8 +824,12 @@ if st.session_state['authentication_status']:
 		SLA_chart= SLA_summary[[ 'Open', 'Close', 'Day', 'SLA met', 'SLA not met']].groupby(['Day']).sum().reset_index()
 		
 		data= load_data(100)
+
+			
 		
-		container= st.container(height= 105, border=False)
+		
+
+		container= st.container(border=False)
 		with container:
 
 
@@ -309,7 +838,7 @@ if st.session_state['authentication_status']:
 			with col6:
 				
 				with stylable_container(
-    
+
 				key= 'button1',
 				css_styles=[
 				"""
@@ -331,7 +860,7 @@ if st.session_state['authentication_status']:
 				float: left;
 				text-align:center;
 				width: 180px;
-				height: 90px;
+				height: 70px;
 				border-radius: 20px;
 
 				}""",
@@ -344,12 +873,14 @@ if st.session_state['authentication_status']:
 				border-color:#BACBEC;
 				text-align: center;
 				width: 180px;
-				height: 100px;
+				height: 90px;
 				border-radius: 30px;
 				padding-left:10px;
 				margin-right:30px;
 				margin-left:0px;
 				font-size:30px;
+				margin-top:20px;
+				margin-bottom: 20px;
 				
 				}""",
 				"""
@@ -423,12 +954,14 @@ if st.session_state['authentication_status']:
 					border-color:#E4A8A8;
 					text-align: center;
 					width: 180px;
-					height: 100px;
+					height: 90px;
 					border-radius: 30px;
 					padding-left:10px;
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
+					margin-top:20px;
+					margin-bottom: 20px;
 					
 					}""",
 					"""
@@ -494,12 +1027,14 @@ if st.session_state['authentication_status']:
 					border-color: #CDD899;
 					text-align: center;
 					width: 180px;
-					height: 100px;
+					height: 90px;
 					border-radius: 30px;
 					padding-left:10px;
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
+					margin-top:20px;
+					margin-bottom: 20px;
 					
 					}""",
 					"""
@@ -563,12 +1098,14 @@ if st.session_state['authentication_status']:
 					border-color: #ADADA8;
 					text-align: center;
 					width: 180px;
-					height: 100px;
+					height: 90px;
 					border-radius: 30px;
 					padding-left:10px;
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
+					margin-top:20px;
+					margin-bottom: 20px;
 					
 					}""",
 					"""
@@ -635,13 +1172,15 @@ if st.session_state['authentication_status']:
 					border-color: #C5CAF7;
 					text-align: center;
 					width: 180px;
-					height: 100px;
+					height: 90px;
 					border-radius: 30px;
 					padding-left:10px;
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
-					
+					margin-top:20px;
+					margin-bottom: 20px;
+
 					}""",
 					"""
 					button:hover {
@@ -707,13 +1246,14 @@ if st.session_state['authentication_status']:
 					border-color: #F5EBA3;
 					text-align: center;
 					width: 180px;
-					height: 100px;
+					height: 90px;
 					border-radius: 30px;
 					padding-left:10px;
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
-					
+					margin-top:20px;
+					margin-bottom: 20px;
 					}""",
 					"""
 					button:hover {
@@ -1138,7 +1678,7 @@ if st.session_state['authentication_status']:
 
 		with col17:
 			
-			st.markdown("<h6 style= 'text-align: left; color: 'black'; font-size: 5px'>Customer Happiness</h6>", unsafe_allow_html=True)
+			st.markdown("<h6 style= 'text-align: left; color: 'black'; font-size: 5px'>Overall Rating Provided</h6>", unsafe_allow_html=True)
 
 
 
@@ -1154,6 +1694,6 @@ if st.session_state['authentication_status']:
 
 
 
-	
+
 
 		
