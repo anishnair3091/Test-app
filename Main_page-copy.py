@@ -11,7 +11,7 @@ from streamlit_extras.stylable_container import stylable_container
 
 
 #Main Page config setup
-st.set_page_config(layout='centered', initial_sidebar_state='collapsed')
+st.set_page_config(layout='wide', initial_sidebar_state='collapsed')
 
 page_bg_img= f"""
 <style>
@@ -81,7 +81,7 @@ with col12:
 		transition-duration: 0.4s;
 		cursor: pointer;
 		position: left;
-		float: left;
+		float: center;
 		text-align:center;
 		width: 180px;
 		height: 90px;
