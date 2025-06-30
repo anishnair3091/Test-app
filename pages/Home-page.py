@@ -18,6 +18,29 @@ st.set_page_config(page_title= "Customer Home Page", layout='wide', initial_side
 
 main_page= st.Page("Main_page-copy.py", title= 'Main page', icon= '🏢')
 
+hide_st_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
+
+
+
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
+
+st.markdown("""
+        <style>
+               .block-container {
+                    padding-top: 1rem;
+                    padding-bottom: 0rem;
+                    padding-left: 5rem;
+                    padding-right: 5rem;
+                }
+        </style>
+        """, unsafe_allow_html=True)
 
 if st.sidebar.button("MAIN", icon= "🏡", type='tertiary'):
 	st.switch_page("Main_page-copy.py")
