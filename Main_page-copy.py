@@ -80,7 +80,7 @@ with col12:
 		display: inline-block;
 		transition-duration: 0.4s;
 		cursor: pointer;
-		position: left;
+		position: center;
 		float: center;
 		text-align:center;
 		width: 180px;
