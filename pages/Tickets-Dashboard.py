@@ -82,14 +82,28 @@ def user_type():
 if st.session_state['authentication_status']:
 	if user_type() == 'customer' or user_type() == 'Admin':
 
-		def userlogin():
-			strings=[]
-			for string in name:
-				strings.append(string)
-			return strings[0]+ strings[1]+strings[2]
 
-		page_bg_header= f"""<div class="stElementContainer element-container st-key-init st-emotion-cache-r6om3p eertqu00" data-testid="stElementContainer" data-stale="false" width="auto" height="auto" overflow="visible"><h5 style="color:DimGrey; font-size: 15px; text-shadow:2px 2px 2px;">P2S Solutions</h5><div class="st-emotion-cache-8atqhb e1mlolmg0"><iframe class="stCustomComponentV1 st-emotion-cache-1tvzk6f e1begtbc0" data-testid="stCustomComponentV1" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-write; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" src="http://localhost:8501/component/extra_streamlit_components.CookieManager.cookie_manager/index.html?streamlitUrl=http%3A%2F%2Flocalhost%3A8501%2FTickets-Dashboard" width="797" height="0" scrolling="no" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads" title="extra_streamlit_components.CookieManager.cookie_manager"></iframe></div></div>"""
-		st.markdown(page_bg_header, unsafe_allow_html=True)
+		def userlogin():
+			full_name= name.upper()
+			words= full_name.split(" ")
+			if len(words) > 1:
+				first_letter = words[0][:1]
+				second_letter= words[1][:1]
+				username= '{}{}'.format(first_letter, second_letter)
+				return username 
+			elif len(words) == 1:
+				first_letter = words[0][:2]
+				username= '{}'.format(first_letter)
+				return username
+
+
+		def user_click():
+			click= f"""<p>User: {name}</p><br>Type: {user_type}</br><p>Email:</p><br>Change Password</br><p>Logout</p>"""
+			return click
+
+		page_bg_header= f'''<html><body><div class="stElementContainer element-container st-key-init st-emotion-cache-r6om3p eertqu00" data-testid="stElementContainer" data-stale="false" width="auto" height="auto" overflow="visible"><h5 style="color:DimGrey; font-size: 15px; text-shadow:2px 2px 2px; word-spacing: 480px;">P2S_Solutions <span style= "font-size: 20px; text-shadow: 1px 1px 1px;">Company_Name</span> <button type= "button" onclick= "alert('Hello world!')" style= "shadow: 2px 2px 2px; border-radius: 50px; height: 50px; width: 50px;">{userlogin()}</button></h5><div class="st-emotion-cache-8atqhb e1mlolmg0"><iframe class="stCustomComponentV1 st-emotion-cache-1tvzk6f e1begtbc0" data-testid="stCustomComponentV1" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-write; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" src="http://localhost:8501/component/extra_streamlit_components.CookieManager.cookie_manager/index.html?streamlitUrl=http%3A%2F%2Flocalhost%3A8501%2FTickets-Dashboard" width="797" height="0" scrolling="no" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads" title="extra_streamlit_components.CookieManager.cookie_manager"></iframe></div></div></body></html>'''
+
+		st.html(page_bg_header)
 
 		st.markdown(
 		"""
@@ -111,10 +125,12 @@ if st.session_state['authentication_status']:
 		)
 
 		with st.sidebar:
-		    tabs = on_hover_tabs(tabName=['Tickets Dashboard', 'Enquiries Dashboard', 'Economy', 'Tickets', 'Enquiries'], 
-		                         iconName=['dashboard', 'dashboard', 'economy', 'confirmation_number', 'explicit' ], default_choice=0)
+		    tabs = on_hover_tabs(tabName=['Home', 'Tickets Dashboard', 'Enquiries Dashboard', 'Create Tickets', 'Raise Enquiries', 'PPM', 'Reports', 'Performance'], 
+		                         iconName=['cottage', 'dashboard', 'dashboard_2', 'confirmation_number', 'explicit', 'calendar_month', 'assignment', 'analytics' ], default_choice=1)
 
-		if tabs =='Tickets Dashboard':
+		if tabs == 'Home':
+			st.switch_page('pages/Home-page.py')
+		elif tabs =='Tickets Dashboard':
 		    st.markdown('''<h4 style= "text-align:left; color:#8C98AF; margin-bottom: 30px; ">TICKETS DASHBOARD</h4>''', unsafe_allow_html=True)
 		    
 		    history_data= pd.read_csv('DATA/History.csv')
@@ -1163,32 +1179,24 @@ if st.session_state['authentication_status']:
 			
 			st.markdown("<h6 style= 'text-align: left; color: 'black'; font-size: 5px'>Overall Rating Provided</h6>", unsafe_allow_html=True)
 
-	elif tabs == 'Money':
-	    st.title("Paper")
-	    st.write('Name of option is {}'.format(tabs))
+	elif tabs == 'Enquiries Dashboard':
+	    st.switch_page("pages/Enquiries-Dashboard.py")
 
-	elif tabs == 'Economy':
-	    st.title("Tom")
-	    st.write('Name of option is {}'.format(tabs))
+	elif tabs == 'Create Tickets':
+	    st.switch_page("pages/Tickets.py")
 
-	elif tabs == 'Tickets':
-	    st.title("Tickets")
-	    st.write('Name of option is {}'.format(tabs))
-	elif tabs == 'Enquiries':
-	    st.title("Enquiriies")
+	elif tabs == 'Raise Enquiries':
 	    st.switch_page("pages/Enquiries.py")
-	elif tabs == 'Reports':
-	    st.title("Reports")
-	    st.write('Name of option is {}'.format(tabs))
+
 	elif tabs == 'PPM':
-	    st.title("PPM")
-	    st.write('Name of option is {}'.format(tabs))
+	    st.switch_page("pages/PPM_Dashboard.py")
+
+	elif tabs == 'Reports':
+	    st.switch_page("pages/reports.py")
+
 	elif tabs == 'Performance':
-	    st.title("Performance")
-	    st.write('Name of option is {}'.format(tabs))
-	elif tabs == 'Home':
-	    st.title("Home")
-	    st.write('Name of option is {}'.format(tabs))
+	   st.switch_page("pages/performance.py")
+	
 
 
 
