@@ -17,37 +17,17 @@ import streamlit_authenticator as stauth
 from streamlit_extras.stylable_container import stylable_container
 from streamlit.components.v1 import html
 from datetime import date 
+from st_on_hover_tabs import on_hover_tabs  
+
 
 #Page config setup
 
-st.set_page_config('Tickets_Dashboard', layout='wide', initial_sidebar_state= 'collapsed')
+st.set_page_config('Tickets_Dashboard', layout='wide', initial_sidebar_state= 'auto')
 
 Home= st.Page('pages/Home-page.py', title= 'Home page', icon= '🏡')
 
+st.markdown('<style>' + open('styles/hover-tab-style.css').read() + '</style>', unsafe_allow_html=True)
 
-hide_st_style = """
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
-</style>
-"""
-
-
-
-st.markdown(hide_st_style, unsafe_allow_html=True)
-
-
-st.markdown("""
-        <style>
-               .block-container {
-                    padding-top: 1rem;
-                    padding-bottom: 0rem;
-                    padding-left: 5rem;
-                    padding-right: 5rem;
-                }
-        </style>
-        """, unsafe_allow_html=True)
 
 user_data= pd.read_csv("DATA/user_data.csv")
 
@@ -108,14 +88,36 @@ if st.session_state['authentication_status']:
 				strings.append(string)
 			return strings[0]+ strings[1]+strings[2]
 
-		page_bg_header= f"""
-		<h4 class="stAppHeader st-emotion-cache-gkoddq e4x2yc31" data-testid="stHeader" style="text-shadow: 3px 3px 3px; font-style: ariel; font-size:15px;">P2S Solutions</h4>
-		"""
-		st.html(f'''<h4 style="text-shadow: 3px 3px 3px; font-style: ariel; font-size:15px; margin-bottom:-10px; margin-bottom:30px; word-spacing: 1150px;">P2S_Solutions <button type='button' onclick="alert('Hello World')" style= "border-color:none; border: 1.5px solid transparent; background-color: transparent;">Support</button></h4>''')
+		page_bg_header= f"""<div class="stElementContainer element-container st-key-init st-emotion-cache-r6om3p eertqu00" data-testid="stElementContainer" data-stale="false" width="auto" height="auto" overflow="visible"><h5 style="text-shadow:2px 2px 2px;">P2S Solutions</h5><div class="st-emotion-cache-8atqhb e1mlolmg0"><iframe class="stCustomComponentV1 st-emotion-cache-1tvzk6f e1begtbc0" data-testid="stCustomComponentV1" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-write; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" src="http://localhost:8501/component/extra_streamlit_components.CookieManager.cookie_manager/index.html?streamlitUrl=http%3A%2F%2Flocalhost%3A8501%2FTickets-Dashboard" width="797" height="0" scrolling="no" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads" title="extra_streamlit_components.CookieManager.cookie_manager"></iframe></div></div>"""
+		st.markdown(page_bg_header, unsafe_allow_html=True)
 
-	
-		
-		history_data= pd.read_csv('DATA/History.csv')
+		st.markdown(
+		"""
+		    <style>
+		            .stAppHeader {
+		                background-color: rgba(255, 255, 255, 0.0);  /* Transparent background */
+		                visibility: visible;  /* Ensure the header is visible */
+		            }
+
+		           .block-container {
+		                padding-top: 1rem;
+		                padding-bottom: 0rem;
+		                padding-left: 5rem;
+		                padding-right: 5rem;
+		            }
+		    </style>
+		    """,
+		unsafe_allow_html=True,
+		)
+
+		with st.sidebar:
+		    tabs = on_hover_tabs(tabName=['Tickets Dashboard', 'Enquiries Dashboard', 'Economy', 'Tickets', 'Enquiries'], 
+		                         iconName=['dashboard', 'dashboard', 'economy', 'confirmation_number', 'explicit' ], default_choice=0)
+
+		if tabs =='Tickets Dashboard':
+		    st.markdown('''<h4 style= "text-align:left; color:#8C98AF; margin-bottom: 30px; ">TICKETS DASHBOARD</h4>''', unsafe_allow_html=True)
+		    
+		    history_data= pd.read_csv('DATA/History.csv')
 
 
 		performance_data= history_data[['AMC_Company', 'Ticket_ref', 'Response_time_difference']].groupby(['AMC_Company']).count().reset_index()
@@ -216,551 +218,13 @@ if st.session_state['authentication_status']:
 		
 		history_data['Datetime']= Datetime
 
-		
-		st.markdown('''<h4 style= "text-align:left; color:#8C98AF; margin-bottom: 30px; ">TICKETS DASHBOARD</h4>''', unsafe_allow_html=True)
-
-
-		with stylable_container(
-    
-				key= 'tab',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				""" 
-				[data-testid= 'stVerticalBlockBorderWrapper'] {
-
-				background-color: #8C98AF;
-
-				height: 40px;
-			
-				cursor: pointer;
-				
-				text-align: center;
-				
-				border-radius: 10px;
-
-				margin-bottom: 20px;
-
-
-
-				}""",
-				
-				
-				]
-
-				):
-
-
-			col1, col2, col3, col4, col5, col6, col7, col9, col10 = st.columns([.1, .1, .1, .1, .1, .1, .1, .2, .1], gap='small', border=False)
-
-			with col1:
-
-				with stylable_container(
-
-				key= 'tab1',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px solid none;
-				border-color:#BACBEC;
-				text-align: center;
-				width: 130px;
-				border-radius: 5px;
-				padding-left:10px;
-				padding-right:10px;
-				margin-right:10px;
-				margin-left:5px;
-				font-size:30px;
-				float: left;
-				position: static;
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				
-				border: 0.5px double none;
-				border-color: black;
-				shadow: grey;
-				text-transform: blue;
-				
-				
-				}""",
-				
-				]
-
-				):
-
-					if st.button("Home", type='tertiary'):
-						st.switch_page("Main_page-copy.py")
-
-
-			with col2:
-
-			
-				with stylable_container(
-
-				key= 'tab2',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px solid none;
-				border-color:#BACBEC;
-				text-align: center;
-				width: 130px;
-				border-radius: 5px;
-				padding-left:10px;
-				padding-right:10px;
-				margin-right:10px;
-				margin-left:5px;
-				font-size:30px;
-				float: left;
-				position: static;
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				
-				border: 0.5px double none;
-				border-color: black;
-				shadow: grey;
-				text-transform: blue;
-				
-				
-				}""",
-				
-				]
-
-				):
-
-					if st.button("Tickets", type='tertiary'):
-						st.switch_page("pages/Tickets-Dashboard.py")
-
-			with col3:
-
-				with stylable_container(
-
-				key= 'tab3',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px solid none;
-				border-color:#BACBEC;
-				text-align: center;
-				width: 130px;
-				border-radius: 5px;
-				padding-left:10px;
-				padding-right:10px;
-				margin-right:10px;
-				margin-left:5px;
-				font-size:30px;
-				float: left;
-				position: static;
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				
-				border: 0.5px double none;
-				border-color: black;
-				shadow: grey;
-				text-transform: blue;
-				
-				
-				}""",
-				
-				]
-
-				):
-
-					if st.button("Enquiries", type= 'tertiary'):
-						st.switch_page("pages/Enquiries-Dashboard.py")
-
-			with col4:
-
-				with stylable_container(
-
-				key= 'tab4',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px solid none;
-				border-color:#BACBEC;
-				text-align: center;
-				width: 130px;
-				border-radius: 5px;
-				padding-left:10px;
-				padding-right:10px;
-				margin-right:10px;
-				margin-left:5px;
-				font-size:30px;
-				float: left;
-				position: static;
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				
-				border: 0.5px double none;
-				border-color: black;
-				shadow: grey;
-				text-transform: blue;
-				
-				
-				}""",
-				
-				]
-
-				):
-
-
-
-					st.button("Create Tickets", type= 'tertiary')
-
-			with col5:
-
-				with stylable_container(
-
-				key= 'tab5',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px solid none;
-				border-color:#BACBEC;
-				text-align: center;
-				width: 130px;
-				border-radius: 5px;
-				padding-left:10px;
-				padding-right:10px;
-				margin-right:10px;
-				margin-left:5px;
-				font-size:30px;
-				float: left;
-				position: static;
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				
-				border: 0.5px double none;
-				border-color: black;
-				shadow: grey;
-				text-transform: blue;
-				
-				
-				}""",
-				
-				]
-
-				):
-
-
-
-					st.button("Raise Enquiries", type= 'tertiary')
-
-			with col6:
-
-				with stylable_container(
-
-				key= 'tab6',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px solid none;
-				border-color:#BACBEC;
-				text-align: center;
-				width: 130px;
-				border-radius: 5px;
-				padding-left:10px;
-				padding-right:10px;
-				margin-right:10px;
-				margin-left:5px;
-				font-size:30px;
-				float: left;
-				position: static;
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				
-				border: 0.5px double none;
-				border-color: black;
-				shadow: grey;
-				text-transform: blue;
-				
-				
-				}""",
-				
-				]
-
-				):
-
-
-
-					st.button("Knowledge base", type= 'tertiary')
-
-			with col7:
-
-				with stylable_container(
-
-				key= 'tab7',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px solid none;
-				border-color:#BACBEC;
-				text-align: center;
-				width: 130px;
-				border-radius: 5px;
-				padding-left:10px;
-				padding-right:10px;
-				margin-right:10px;
-				margin-left:5px;
-				font-size:30px;
-				float: left;
-				position: static;
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				
-				border: 0.5px double none;
-				border-color: black;
-				shadow: grey;
-				text-transform: blue;
-				
-				
-				}""",
-				
-				]
-
-				):
-
-
-					st.button("Chat", type='tertiary')
-
-			
-
-			with col9:
-
-				with stylable_container(
-
-				key= 'tab9',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px solid none;
-				border-color:#BACBEC;
-				text-align: center;
-				width: 250px;
-				border-radius: 5px;
-				padding-left:10px;
-				padding-right:10px;
-				margin-right:10px;
-				margin-left:5px;
-				font-size:30px;
-				float: left;
-				position: static;
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				
-				border: 0.5px double none;
-				border-color: black;
-				shadow: grey;
-				text-transform: blue;
-
-				
-				
-				}""",
-				
-				]
-
-				):
-
-					option11= st.selectbox("Company", options=data['AMC_Company'].unique(), index= None, placeholder= 'Search with Company Name', label_visibility='collapsed', width=400)
-
-			with col10:
-
-				with stylable_container(
-
-				key= 'tab10',
-				css_styles=[
-				"""
-				p {
-				font-size: 16px;
-				font-color: #BACBEC;
-				margin-bottom:15px;
-				margin-top:15px;
-
-
-				}""",
-
-				
-				"""
-				button {
-				background-color: transparent;
-				color: black;
-				text-color: #BACBEC;
-				border: 1.5px groove white;
-				border-color:none;
-				text-align: center;
-				width: 80px;
-				border-radius: 100px;
-				margin-right:10px;
-				margin-left:5px;
-				height:30px;
-				font-size:30px;
-				float: right;
-				position:relative;
-				
-				
-				}""",
-				"""
-				button:hover {
-				background-color: none;
-				color: ghostwhite;
-				font-weight: bolder;
-				border: 0.5px double none;
-				border-color: transparent;
-				shadow: grey;
-				text-transform: blue;
-				
-				
-				}""",
-				
-				]
-
-				):
-
-
-
-					with st.popover(f"{userlogin()}"):
-
-						st.html(f'''<p style="font-size: 20px;">User:</p>''')
-						st.html(f'''<p>{name}</p>''')
-						if st.button("Logout"):
-						
-							authenticator.logout("LOGOUT", "sidebar")
-
+					
 		
 		def load_data(nrows):
 			data = pd.read_csv("DATA/History.csv")
-			if option11 != None:
-				data1 = data[data['AMC_Company'] == option11]
-				return data1 
-			elif option11 == None:
-				data1 = data 
-				return data1
+		 
+			data1 = data 
+			return data1
 
 
 		data = load_data(1000)
@@ -1699,20 +1163,51 @@ if st.session_state['authentication_status']:
 			
 			st.markdown("<h6 style= 'text-align: left; color: 'black'; font-size: 5px'>Overall Rating Provided</h6>", unsafe_allow_html=True)
 
+	elif tabs == 'Money':
+	    st.title("Paper")
+	    st.write('Name of option is {}'.format(tabs))
+
+	elif tabs == 'Economy':
+	    st.title("Tom")
+	    st.write('Name of option is {}'.format(tabs))
+
+	elif tabs == 'Tickets':
+	    st.title("Tickets")
+	    st.write('Name of option is {}'.format(tabs))
+	elif tabs == 'Enquiries':
+	    st.title("Enquiriies")
+	    st.switch_page("pages/Enquiries.py")
+	elif tabs == 'Reports':
+	    st.title("Reports")
+	    st.write('Name of option is {}'.format(tabs))
+	elif tabs == 'PPM':
+	    st.title("PPM")
+	    st.write('Name of option is {}'.format(tabs))
+	elif tabs == 'Performance':
+	    st.title("Performance")
+	    st.write('Name of option is {}'.format(tabs))
+	elif tabs == 'Home':
+	    st.title("Home")
+	    st.write('Name of option is {}'.format(tabs))
 
 
-		
 
-		
+
+
+
+
+
+
+
+
+
 		
 
 			
-		
-				
 
 
 
 
 
 
-		
+
