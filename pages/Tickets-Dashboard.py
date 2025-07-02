@@ -88,7 +88,7 @@ if st.session_state['authentication_status']:
 				strings.append(string)
 			return strings[0]+ strings[1]+strings[2]
 
-		page_bg_header= f"""<div class="stElementContainer element-container st-key-init st-emotion-cache-r6om3p eertqu00" data-testid="stElementContainer" data-stale="false" width="auto" height="auto" overflow="visible"><h5 style="text-shadow:2px 2px 2px;">P2S Solutions</h5><div class="st-emotion-cache-8atqhb e1mlolmg0"><iframe class="stCustomComponentV1 st-emotion-cache-1tvzk6f e1begtbc0" data-testid="stCustomComponentV1" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-write; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" src="http://localhost:8501/component/extra_streamlit_components.CookieManager.cookie_manager/index.html?streamlitUrl=http%3A%2F%2Flocalhost%3A8501%2FTickets-Dashboard" width="797" height="0" scrolling="no" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads" title="extra_streamlit_components.CookieManager.cookie_manager"></iframe></div></div>"""
+		page_bg_header= f"""<div class="stElementContainer element-container st-key-init st-emotion-cache-r6om3p eertqu00" data-testid="stElementContainer" data-stale="false" width="auto" height="auto" overflow="visible"><h5 style="color:DimGrey; font-size: 15px; text-shadow:2px 2px 2px;">P2S Solutions</h5><div class="st-emotion-cache-8atqhb e1mlolmg0"><iframe class="stCustomComponentV1 st-emotion-cache-1tvzk6f e1begtbc0" data-testid="stCustomComponentV1" allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; clipboard-write; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking" src="http://localhost:8501/component/extra_streamlit_components.CookieManager.cookie_manager/index.html?streamlitUrl=http%3A%2F%2Flocalhost%3A8501%2FTickets-Dashboard" width="797" height="0" scrolling="no" sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads" title="extra_streamlit_components.CookieManager.cookie_manager"></iframe></div></div>"""
 		st.markdown(page_bg_header, unsafe_allow_html=True)
 
 		st.markdown(
@@ -326,13 +326,13 @@ if st.session_state['authentication_status']:
 				css_styles=[
 				"""
 				p {
-				font-size: 21px;
+				font-size: 18px;
 				}""",
 
 				""" 
 				button {
-				border: 1.5px solid #BACBEC;
-				color: #BACBEC;
+				border: 1.5px solid DimGray;
+				color: DimGray;
 				font-size:30px;
 				text-align: left;
 				text-decoration: none;
@@ -352,13 +352,13 @@ if st.session_state['authentication_status']:
 				background-color: white;
 				color: black;
 				text-color: #BACBEC;
-				border: 1.5px solid #04AA6D;
-				border-color:#BACBEC;
+				border: 1.5px solid DimGray;
+				border-color:DimGray;
 				text-align: center;
-				width: 180px;
+				width: 160px;
 				height: 90px;
 				border-radius: 30px;
-				padding-left:10px;
+				
 				margin-right:30px;
 				margin-left:0px;
 				font-size:30px;
@@ -368,11 +368,11 @@ if st.session_state['authentication_status']:
 				}""",
 				"""
 				button:hover {
-				background-color: #BACBEC;
+				background-color: DimGray;
 				color: white;
 				font-weight:bolder;
-				border: 3.5px solid #BACBEC;
-				border-color: #BACBEC;
+				border: 3.5px solid DimGray;
+				border-color: DimGray;
 				shadow: grey;
 				text-transform: blue;
 				
@@ -405,15 +405,15 @@ if st.session_state['authentication_status']:
 					css_styles=[
 					"""
 					p {
-					font-size: 21px;
+					font-size: 18px;
 					
 					
 					}""",
 
 					""" 
 					button {
-					border: 1.5px solid #E4A8A8;
-					color: #E4A8A8;
+					border: 1.5px solid DimGray;
+					color: DimGray;
 					font-size:26px;
 					text-align: left;
 					text-decoration: none;
@@ -433,13 +433,13 @@ if st.session_state['authentication_status']:
 					background-color: white;
 					color: black;
 					text-color: #BACBEC;
-					border: 1.5px solid #04AA6D;
-					border-color:#E4A8A8;
+					border: 1.5px solid DimGray;
+					border-color:DimGray;
 					text-align: center;
-					width: 180px;
+					width: 160px;
 					height: 90px;
 					border-radius: 30px;
-					padding-left:10px;
+					
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
@@ -449,11 +449,11 @@ if st.session_state['authentication_status']:
 					}""",
 					"""
 					button:hover {
-					background-color: #E4A8A8;
+					background-color: DimGray;
 					color: white;
 					font-weight:bolder;
-					border: 3.5px solid #E4A8A8;
-					border-color: #E4A8A8;
+					border: 3.5px solid DimGray;
+					border-color: DimGray;
 					shadow: grey;
 					text-transform: blue;
 					
@@ -480,13 +480,13 @@ if st.session_state['authentication_status']:
 					css_styles=[
 					"""
 					p {
-					font-size: 21px
+					font-size: 18px
 					}""",
 
 					""" 
 					button {
-					border: 1.5px solid #CDD899;
-					color: #E4A8A8;
+					border: 1.5px solid DimGray;
+					color: DimGray;
 					font-size:26px;
 					text-align: left;
 					text-decoration: none;
@@ -506,13 +506,13 @@ if st.session_state['authentication_status']:
 					background-color: white;
 					color: black;
 					text-color: #BACBEC;
-					border: 1.5px solid #CDD899;
-					border-color: #CDD899;
+					border: 1.5px solid DimGray;
+					border-color: DimGray;
 					text-align: center;
-					width: 180px;
+					width: 160px;
 					height: 90px;
 					border-radius: 30px;
-					padding-left:10px;
+					
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
@@ -522,11 +522,11 @@ if st.session_state['authentication_status']:
 					}""",
 					"""
 					button:hover {
-					background-color: #CDD899;
+					background-color: DimGray;
 					color: white;
 					font-weight:bolder;
-					border: 3.5px solid #CDD899;
-					border-color: #CDD899;
+					border: 3.5px solid DimGray;
+					border-color: DimGray;
 					shadow: grey;
 					text-transform: blue;
 					
@@ -551,13 +551,13 @@ if st.session_state['authentication_status']:
 					css_styles=[
 					"""
 					p {
-					font-size: 21px
+					font-size: 18px
 					}""",
 
 					""" 
 					button {
-					border: 1.5px solid #ADADA8;
-					color: #E4A8A8;
+					border: 1.5px solid DimGray;
+					color: DimGray;
 					font-size:26px;
 					text-align: left;
 					text-decoration: none;
@@ -577,13 +577,13 @@ if st.session_state['authentication_status']:
 					background-color: white;
 					color: black;
 					text-color: #BACBEC;
-					border: 1.5px solid #ADADA8;
-					border-color: #ADADA8;
+					border: 1.5px solid DimGray;
+					border-color: DimGray;
 					text-align: center;
-					width: 180px;
+					width: 160px;
 					height: 90px;
 					border-radius: 30px;
-					padding-left:10px;
+					
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
@@ -593,11 +593,11 @@ if st.session_state['authentication_status']:
 					}""",
 					"""
 					button:hover {
-					background-color: #ADADA8;
+					background-color: DimGray;
 					color: white;
 					font-weight:bolder;
-					border: 3.5px solid #ADADA8;
-					border-color: #ADADA8;
+					border: 3.5px solid DimGray;
+					border-color: DimGray;
 					shadow: grey;
 					text-transform: blue;
 					
@@ -625,13 +625,13 @@ if st.session_state['authentication_status']:
 					css_styles=[
 					"""
 					p {
-					font-size: 21px
+					font-size: 18px
 					}""",
 
 					""" 
 					button {
-					border: 1.5px solid #C5CAF7;
-					color: #C5CAF7;
+					border: 1.5px solid DimGray;
+					color: DimGray;
 					font-size:26px;
 					text-align: left;
 					text-decoration: none;
@@ -650,14 +650,14 @@ if st.session_state['authentication_status']:
 					button {
 					background-color: white;
 					color: black;
-					text-color: #BACBEC;
-					border: 1.5px solid #C5CAF7;
-					border-color: #C5CAF7;
+					text-color: DimGray;
+					border: 1.5px solid DimGray;
+					border-color: DimGray;
 					text-align: center;
-					width: 180px;
+					width: 160px;
 					height: 90px;
 					border-radius: 30px;
-					padding-left:10px;
+					
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
@@ -667,11 +667,11 @@ if st.session_state['authentication_status']:
 					}""",
 					"""
 					button:hover {
-					background-color: #C5CAF7;
+					background-color: DimGray;
 					color: white;
 					font-weight:bolder;
-					border: 3.5px solid #C5CAF7;
-					border-color: #C5CAF7;
+					border: 3.5px solid DimGray;
+					border-color: DimGray;
 					shadow: grey;
 					text-transform: blue;
 					
@@ -699,13 +699,13 @@ if st.session_state['authentication_status']:
 					css_styles=[
 					"""
 					p {
-					font-size: 21px
+					font-size: 18px
 					}""",
 
 					""" 
 					button {
-					border: 1.5px solid #F5EBA3;
-					color: #F5EBA3;
+					border: 1.5px solid DimGray;
+					color: DimGray;
 					font-size:26px;
 					text-align: left;
 					text-decoration: none;
@@ -725,13 +725,13 @@ if st.session_state['authentication_status']:
 					background-color: white;
 					color: black;
 					text-color: #F5EBA3;
-					border: 1.5px solid #F5EBA3;
-					border-color: #F5EBA3;
+					border: 1.5px solid DimGray;
+					border-color: DimGray;
 					text-align: center;
-					width: 180px;
+					width: 160px;
 					height: 90px;
 					border-radius: 30px;
-					padding-left:10px;
+					
 					margin-right:30px;
 					margin-left:0px;
 					font-size:30px;
@@ -740,11 +740,11 @@ if st.session_state['authentication_status']:
 					}""",
 					"""
 					button:hover {
-					background-color: #F5EBA3;
+					background-color: DimGray;
 					color: white;
 					font-weight:bolder;
-					border: 3.5px solid #F5EBA3;
-					border-color: #F5EBA3;
+					border: 3.5px solid DimGray;
+					border-color: DimGray;
 					shadow: grey;
 					text-transform: blue;
 					
